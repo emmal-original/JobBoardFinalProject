@@ -161,16 +161,20 @@ namespace JobBoardFinalProject.UI.MVC.Controllers
                     newUserDetails.LastName = model.LastName;
                     newUserDetails.ResumeFilename = model.ResumeFilename;
 
+                    UserManager.AddToRole(user.Id, "Employee");//auto-put user into Employee role
+
                     FinalProjectEntities db = new FinalProjectEntities();
                     db.UserDetails.Add(newUserDetails);
                     db.SaveChanges();
                     #endregion
 
-                    var code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
-                    var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
-                    await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking this link: <a href=\"" + callbackUrl + "\">link</a>");
-                    ViewBag.Link = callbackUrl;
-                    return View("DisplayEmail");
+                    //var code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
+                    //var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
+                    //await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking this link: <a href=\"" + callbackUrl + "\">link</a>");
+                    //ViewBag.Link = callbackUrl;
+                    //return View("DisplayEmail");
+
+                    return RedirectToAction("Login");//send them to login with new credentials
                 }
                 AddErrors(result);
             }

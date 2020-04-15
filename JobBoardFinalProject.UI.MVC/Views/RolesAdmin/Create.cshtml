@@ -1,10 +1,10 @@
 ﻿@model JobBoardFinalProject.UI.MVC.Models.RoleViewModel
 
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = "Create Roles";
 }
 
-<h2>Create.</h2>
+<h2>@ViewBag.Title</h2>
 
 
 @using (Html.BeginForm())
@@ -12,7 +12,6 @@
     @Html.AntiForgeryToken()
 
     <div class="form-horizontal">
-        <h4>Role.</h4>
         <hr />
         @Html.ValidationSummary(true)
 

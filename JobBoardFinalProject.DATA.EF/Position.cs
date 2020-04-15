@@ -24,11 +24,11 @@ namespace JobBoardFinalProject.DATA.EF
         public string Title { get; set; }
         public string JobDescription { get; set; }
         public int DepartmentId { get; set; }
-        public Nullable<bool> HasRelocationBenefits { get; set; }
-        public Nullable<bool> IsFullTime { get; set; }
-        public Nullable<bool> IsSalary { get; set; }
-        public Nullable<bool> HasSupervisoryResponsibilities { get; set; }
-        public Nullable<bool> IsFeaturedPosition { get; set; }
+        public bool HasRelocationBenefits { get; set; }
+        public bool IsFullTime { get; set; }
+        public bool IsSalary { get; set; }
+        public bool HasSupervisoryResponsibilities { get; set; }
+        public bool IsFeaturedPosition { get; set; }
     
         public virtual Department Department { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

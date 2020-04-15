@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="FinalProjectModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="FinalProjectModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="__MigrationHistory">
           <Key>
             <PropertyRef Name="MigrationId" />
@@ -112,7 +112,7 @@
           <Property Name="OpenPositionId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="LocationId" Type="int" Nullable="false" />
           <Property Name="PositionId" Type="int" Nullable="false" />
-          <Property Name="PostingDate" Type="date" />
+          <Property Name="PostingDate" Type="date" Nullable="false" />
         </EntityType>
         <EntityType Name="Positions">
           <Key>
@@ -122,11 +122,11 @@
           <Property Name="Title" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="JobDescription" Type="varchar(max)" />
           <Property Name="DepartmentId" Type="int" Nullable="false" />
-          <Property Name="HasRelocationBenefits" Type="bit" />
-          <Property Name="IsFullTime" Type="bit" />
-          <Property Name="IsSalary" Type="bit" />
-          <Property Name="HasSupervisoryResponsibilities" Type="bit" />
-          <Property Name="IsFeaturedPosition" Type="bit" />
+          <Property Name="HasRelocationBenefits" Type="bit" Nullable="false" />
+          <Property Name="IsFullTime" Type="bit" Nullable="false" />
+          <Property Name="IsSalary" Type="bit" Nullable="false" />
+          <Property Name="HasSupervisoryResponsibilities" Type="bit" Nullable="false" />
+          <Property Name="IsFeaturedPosition" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -347,8 +347,7 @@
             <End Role="Positions" EntitySet="Positions" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="FinalProjectModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -464,7 +463,7 @@
           <Property Name="OpenPositionId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="LocationId" Type="Int32" Nullable="false" />
           <Property Name="PositionId" Type="Int32" Nullable="false" />
-          <Property Name="PostingDate" Type="DateTime" Precision="0" />
+          <Property Name="PostingDate" Type="DateTime" Precision="0" Nullable="false" />
           <NavigationProperty Name="Applications" Relationship="Self.FK_Applications_OpenPositions" FromRole="OpenPositions" ToRole="Applications" />
           <NavigationProperty Name="Location" Relationship="Self.FK_OpenPositions_Locations" FromRole="OpenPositions" ToRole="Locations" />
           <NavigationProperty Name="Position" Relationship="Self.FK_OpenPositions_Positions" FromRole="OpenPositions" ToRole="Positions" />
@@ -477,11 +476,11 @@
           <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="JobDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="DepartmentId" Type="Int32" Nullable="false" />
-          <Property Name="HasRelocationBenefits" Type="Boolean" />
-          <Property Name="IsFullTime" Type="Boolean" />
-          <Property Name="IsSalary" Type="Boolean" />
-          <Property Name="HasSupervisoryResponsibilities" Type="Boolean" />
-          <Property Name="IsFeaturedPosition" Type="Boolean" />
+          <Property Name="HasRelocationBenefits" Type="Boolean" Nullable="false" />
+          <Property Name="IsFullTime" Type="Boolean" Nullable="false" />
+          <Property Name="IsSalary" Type="Boolean" Nullable="false" />
+          <Property Name="HasSupervisoryResponsibilities" Type="Boolean" Nullable="false" />
+          <Property Name="IsFeaturedPosition" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="Department" Relationship="Self.FK_Positions_Departments" FromRole="Positions" ToRole="Departments" />
           <NavigationProperty Name="OpenPositions" Relationship="Self.FK_OpenPositions_Positions" FromRole="Positions" ToRole="OpenPositions" />
         </EntityType>

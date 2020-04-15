@@ -25,7 +25,23 @@
                     <li>@Html.ActionLink("About", "About", "Home")</li>
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
 
-                    @if (Request.IsAuthenticated && User.IsInRole("Admin")) {
+                    @if (Request.IsAuthenticated)
+                    {
+                        <li>@Html.ActionLink("Open Positions", "Index", "OpenPositions")</li>
+                        <li>@Html.ActionLink("User Details", "Index", "UserDetails")</li>
+                    }
+
+                    @if (Request.IsAuthenticated && (User.IsInRole("Admin") || User.IsInRole("Manager")))
+                    {
+                        <li>@Html.ActionLink("Positions", "Index", "Positions")</li>
+                    }
+
+
+                    @if (Request.IsAuthenticated && User.IsInRole("Admin"))
+                    {
+                        <li>@Html.ActionLink("Departments", "Index", "Departments")</li>
+                        <li>@Html.ActionLink("Application Statuses", "Index", "ApplicationStatus")</li>
+                        <li>@Html.ActionLink("Locations", "Index", "Locations")</li>
                         <li>@Html.ActionLink("RolesAdmin", "Index", "RolesAdmin")</li>
                         <li>@Html.ActionLink("UsersAdmin", "Index", "UsersAdmin")</li>
                     }
@@ -34,7 +50,7 @@
             </div>
         </div>
     </div>
-    <div class="container body-content">
+    <div class="container body-content" style="margin-top: 150px;">
         @RenderBody()
         <hr />
         <footer>

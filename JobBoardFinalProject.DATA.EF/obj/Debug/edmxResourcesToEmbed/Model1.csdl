@@ -112,7 +112,7 @@
     <Property Name="OpenPositionId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="LocationId" Type="Int32" Nullable="false" />
     <Property Name="PositionId" Type="Int32" Nullable="false" />
-    <Property Name="PostingDate" Type="DateTime" Precision="0" />
+    <Property Name="PostingDate" Type="DateTime" Precision="0" Nullable="false" />
     <NavigationProperty Name="Applications" Relationship="Self.FK_Applications_OpenPositions" FromRole="OpenPositions" ToRole="Applications" />
     <NavigationProperty Name="Location" Relationship="Self.FK_OpenPositions_Locations" FromRole="OpenPositions" ToRole="Locations" />
     <NavigationProperty Name="Position" Relationship="Self.FK_OpenPositions_Positions" FromRole="OpenPositions" ToRole="Positions" />
@@ -125,11 +125,11 @@
     <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="JobDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
     <Property Name="DepartmentId" Type="Int32" Nullable="false" />
-    <Property Name="HasRelocationBenefits" Type="Boolean" />
-    <Property Name="IsFullTime" Type="Boolean" />
-    <Property Name="IsSalary" Type="Boolean" />
-    <Property Name="HasSupervisoryResponsibilities" Type="Boolean" />
-    <Property Name="IsFeaturedPosition" Type="Boolean" />
+    <Property Name="HasRelocationBenefits" Type="Boolean" Nullable="false" />
+    <Property Name="IsFullTime" Type="Boolean" Nullable="false" />
+    <Property Name="IsSalary" Type="Boolean" Nullable="false" />
+    <Property Name="HasSupervisoryResponsibilities" Type="Boolean" Nullable="false" />
+    <Property Name="IsFeaturedPosition" Type="Boolean" Nullable="false" />
     <NavigationProperty Name="Department" Relationship="Self.FK_Positions_Departments" FromRole="Positions" ToRole="Departments" />
     <NavigationProperty Name="OpenPositions" Relationship="Self.FK_OpenPositions_Positions" FromRole="Positions" ToRole="OpenPositions" />
   </EntityType>

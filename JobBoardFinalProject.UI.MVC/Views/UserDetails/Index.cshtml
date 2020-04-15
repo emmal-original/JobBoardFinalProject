@@ -1,0 +1,53 @@
+﻿@model IEnumerable<JobBoardFinalProject.DATA.EF.UserDetail>
+@using Microsoft.AspNet.Identity
+@using JobBoardFinalProject.DATA.EF
+
+@{
+    ViewBag.Title = "User Details";
+}
+
+<h2>@ViewBag.Title</h2>
+
+
+@*<p>
+    @Html.ActionLink("Create New", "Create")
+</p>*@
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LastName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ResumeFilename)
+        </th>
+        <th></th>
+    </tr>
+
+    @{
+        FinalProjectEntities db = new FinalProjectEntities();
+        string userID = User.Identity.GetUserId();
+        UserDetail currentUser = db.UserDetails.Where(ud => ud.UserId == userID).FirstOrDefault();
+
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => currentUser.FirstName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => currentUser.LastName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => currentUser.ResumeFilename)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = currentUser.UserId }) |
+                    @Html.ActionLink("Details", "Details", new { id = currentUser.UserId }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = currentUser.UserId })
+                </td>
+            </tr>
+    }
+
+
+</table>

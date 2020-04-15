@@ -1,0 +1,101 @@
+﻿@model JobBoardFinalProject.DATA.EF.OpenPosition
+
+@{
+    ViewBag.Title = "Open Position Details";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.PostingDate)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.PostingDate)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Position.Title)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Position.Title)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Position.JobDescription)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Position.JobDescription)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Position.Department.DepartmentName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Position.Department.DepartmentName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Position.HasRelocationBenefits)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Position.HasRelocationBenefits)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Position.IsFullTime)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Position.IsFullTime)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Position.IsSalary)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Position.IsSalary)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Position.HasSupervisoryResponsibilities)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Position.HasSupervisoryResponsibilities)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Location.BranchNumber)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Location.BranchNumber)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Location.StreetAddress)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Location.StreetAddress)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Location.City)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Location.City)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Location.State)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Location.State)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Location.ZipCode)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Location.ZipCode)
+        </dd>
+
+
+    </dl>
+</div>
+<p>
+    @if (User.IsInRole("Manager"))
+    {
+        @Html.ActionLink("Edit", "Edit", new { id = Model.OpenPositionId })
+        @Html.Raw(" |")
+    }
+    @Html.ActionLink("Back to List", "Index")
+</p>

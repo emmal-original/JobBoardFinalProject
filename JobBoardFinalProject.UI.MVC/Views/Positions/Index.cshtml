@@ -1,0 +1,87 @@
+﻿@model IEnumerable<JobBoardFinalProject.DATA.EF.Position>
+
+@{
+    ViewBag.Title = "Positions";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Title)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Department.DepartmentName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.JobDescription)
+        </th>
+        @*<th>
+            @Html.DisplayNameFor(model => model.HasRelocationBenefits)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsFullTime)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsSalary)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.HasSupervisoryResponsibilities)
+        </th>*@
+        @*<th>
+            @Html.DisplayNameFor(model => model.IsFeaturedPosition)
+        </th>*@
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Title)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Department.DepartmentName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.JobDescription)
+        </td>
+        @*<td>
+            @Html.DisplayFor(modelItem => item.HasRelocationBenefits)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IsFullTime)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IsSalary)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.HasSupervisoryResponsibilities)
+        </td>*@
+        @*<td>
+            @Html.DisplayFor(modelItem => item.IsFeaturedPosition)
+        </td>*@
+        <td>
+
+            @if (User.IsInRole("Admin"))
+            {
+                @Html.ActionLink("Edit", "Edit", new { id = item.PositionId })
+                @Html.Raw(" |")
+            }
+
+            @Html.ActionLink("Details", "Details", new { id = item.PositionId })
+
+            @if (User.IsInRole("Admin"))
+            {
+                @Html.Raw("| ")
+                @Html.ActionLink("Delete", "Delete", new { id = item.PositionId })
+            }
+
+        </td>
+    </tr>
+}
+
+</table>

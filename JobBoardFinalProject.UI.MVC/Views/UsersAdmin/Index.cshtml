@@ -1,10 +1,11 @@
 ﻿@model IEnumerable<JobBoardFinalProject.UI.MVC.Models.ApplicationUser>
+@using JobBoardFinalProject.DATA.EF @*Added for custom UserDetails*@
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Users Admin";
 }
 
-<h2>Index</h2>
+<h2>@ViewBag.Title</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")

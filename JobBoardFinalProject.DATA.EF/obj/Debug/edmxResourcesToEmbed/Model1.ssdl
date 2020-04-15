@@ -107,7 +107,7 @@
     <Property Name="OpenPositionId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="LocationId" Type="int" Nullable="false" />
     <Property Name="PositionId" Type="int" Nullable="false" />
-    <Property Name="PostingDate" Type="date" />
+    <Property Name="PostingDate" Type="date" Nullable="false" />
   </EntityType>
   <EntityType Name="Positions">
     <Key>
@@ -117,11 +117,11 @@
     <Property Name="Title" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="JobDescription" Type="varchar(max)" />
     <Property Name="DepartmentId" Type="int" Nullable="false" />
-    <Property Name="HasRelocationBenefits" Type="bit" />
-    <Property Name="IsFullTime" Type="bit" />
-    <Property Name="IsSalary" Type="bit" />
-    <Property Name="HasSupervisoryResponsibilities" Type="bit" />
-    <Property Name="IsFeaturedPosition" Type="bit" />
+    <Property Name="HasRelocationBenefits" Type="bit" Nullable="false" />
+    <Property Name="IsFullTime" Type="bit" Nullable="false" />
+    <Property Name="IsSalary" Type="bit" Nullable="false" />
+    <Property Name="HasSupervisoryResponsibilities" Type="bit" Nullable="false" />
+    <Property Name="IsFeaturedPosition" Type="bit" Nullable="false" />
   </EntityType>
   <EntityType Name="sysdiagrams">
     <Key>
