@@ -1,10 +1,10 @@
 ﻿@model IEnumerable<JobBoardFinalProject.DATA.EF.Application>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "View Applications";
 }
 
-<h2>Index</h2>
+<h2>@ViewBag.Title</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
@@ -12,22 +12,25 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.ApplicationDate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ManagerNotes)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ResumeFilename)
-        </th>
-        <th>
             @Html.DisplayNameFor(model => model.ApplicationStatus.StatusName)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.OpenPosition.OpenPositionId)
+            @Html.DisplayNameFor(model => model.OpenPosition.Position.Title)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.UserDetail.FirstName)
+            @Html.DisplayNameFor(model => model.OpenPosition.Position.Department.DepartmentName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OpenPosition.Location.City)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OpenPosition.Location.State)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OpenPosition.Location.UserDetail.FullName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ManagerNotes)
         </th>
         <th></th>
     </tr>
@@ -35,27 +38,32 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.ApplicationDate)
+            @Html.DisplayFor(modelItem => item.ApplicationStatus.StatusName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OpenPosition.Position.Title)
+        </td>
+
+        <td>
+            @Html.DisplayFor(modelItem => item.OpenPosition.Position.Department.DepartmentName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OpenPosition.Location.City)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OpenPosition.Location.State)
+        </td>
+
+        <td>
+            @Html.DisplayFor(modelItem => item.OpenPosition.Location.UserDetail.FullName)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.ManagerNotes)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.ResumeFilename)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ApplicationStatus.StatusName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.OpenPosition.OpenPositionId)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.UserDetail.FirstName)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ApplicationId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ApplicationId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ApplicationId })
+            @Html.ActionLink("Edit", "Edit", new { id = item.ApplicationId }) |
+            @Html.ActionLink("Details", "Details", new { id = item.ApplicationId }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.ApplicationId })
         </td>
     </tr>
 }

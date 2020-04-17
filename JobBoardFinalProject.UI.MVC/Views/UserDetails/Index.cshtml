@@ -1,6 +1,4 @@
 ﻿@model IEnumerable<JobBoardFinalProject.DATA.EF.UserDetail>
-@using Microsoft.AspNet.Identity
-@using JobBoardFinalProject.DATA.EF
 
 @{
     ViewBag.Title = "User Details";
@@ -8,10 +6,9 @@
 
 <h2>@ViewBag.Title</h2>
 
-
-@*<p>
+<p>
     @Html.ActionLink("Create New", "Create")
-</p>*@
+</p>
 <table class="table">
     <tr>
         <th>
@@ -26,28 +23,25 @@
         <th></th>
     </tr>
 
-    @{
-        FinalProjectEntities db = new FinalProjectEntities();
-        string userID = User.Identity.GetUserId();
-        UserDetail currentUser = db.UserDetails.Where(ud => ud.UserId == userID).FirstOrDefault();
-
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => currentUser.FirstName)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => currentUser.LastName)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => currentUser.ResumeFilename)
-                </td>
-                <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = currentUser.UserId }) |
-                    @Html.ActionLink("Details", "Details", new { id = currentUser.UserId }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = currentUser.UserId })
-                </td>
-            </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LastName)
+            </td>
+            <td>
+                @*@Html.DisplayFor(modelItem => item.ResumeFilename)*@
+                <a href="@Url.Content("~/Content/Documents/EmployeeResumes/" + item.ResumeFilename)" target="_blank">Uploaded Resume</a>
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.UserId }) |
+                @Html.ActionLink("Details", "Details", new { id = item.UserId }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.UserId })
+            </td>
+        </tr>
     }
-
 
 </table>

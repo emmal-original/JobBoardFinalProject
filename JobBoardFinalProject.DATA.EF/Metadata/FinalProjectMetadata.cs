@@ -20,7 +20,7 @@ namespace JobBoardFinalProject.DATA.EF//.Metadata
         public int OpenPositionId { get; set; }
 
         [Required(ErrorMessage ="*Application Date is required")]
-        [DisplayFormat(DataFormatString = "{0:d}", ApplyFormatInEditMode = true, NullDisplayText = "Date unknown")]
+        [DisplayFormat(DataFormatString = "{0:d}")]
         [Display(Name = "Application Date")]
         public System.DateTime ApplicationDate { get; set; }
 

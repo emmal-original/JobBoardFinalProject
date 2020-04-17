@@ -18,7 +18,11 @@ namespace JobBoardFinalProject.UI.MVC.Controllers
         // GET: UserDetails
         public ActionResult Index()
         {
-            return View(db.UserDetails.ToList());
+            string userID = User.Identity.GetUserId();
+            var currentUser = from u in db.UserDetails
+                              where u.UserId == userID
+                              select u;
+            return View(currentUser);
         }
 
         // GET: UserDetails/Details/5
@@ -47,10 +51,36 @@ namespace JobBoardFinalProject.UI.MVC.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "UserId,FirstName,LastName,ResumeFilename")] UserDetail userDetail)
+        public ActionResult Create([Bind(Include = "UserId,FirstName,LastName,ResumeFilename")] UserDetail userDetail, HttpPostedFileBase fupResume)
         {
             if (ModelState.IsValid)
             {
+                #region FileUpload CREATE
+                string resumeFileName = "noPDF.pdf";
+
+                //if user uploads resume, process it
+                if (fupResume != null)
+                {
+                    resumeFileName = fupResume.FileName;
+
+                    string ext = resumeFileName.Substring(resumeFileName.LastIndexOf("."));
+
+                    if (ext.ToLower() == ".pdf")
+                    {
+                        resumeFileName = Guid.NewGuid() + ext;
+
+                        fupResume.SaveAs(Server.MapPath("~/Content/Documents/EmployeeResumes/" + resumeFileName));
+                    }
+                    else
+                    {
+                        resumeFileName = "noPDF.pdf";
+                    }
+                }
+
+                userDetail.ResumeFilename = resumeFileName;
+
+                #endregion
+
                 db.UserDetails.Add(userDetail);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -79,10 +109,34 @@ namespace JobBoardFinalProject.UI.MVC.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "UserId,FirstName,LastName,ResumeFilename")] UserDetail userDetail)
+        public ActionResult Edit([Bind(Include = "UserId,FirstName,LastName,ResumeFilename")] UserDetail userDetail, HttpPostedFileBase fupResume)
         {
             if (ModelState.IsValid)
             {
+                #region FileUploadEDIT
+
+                if (fupResume != null)
+                {
+                    string resumeFileName = fupResume.FileName;
+
+                    string ext = resumeFileName.Substring(resumeFileName.LastIndexOf("."));
+
+                    if (ext.ToLower() == ".pdf")
+                    {
+                        resumeFileName = Guid.NewGuid() + ext;
+
+                        fupResume.SaveAs(Server.MapPath("~/Content/Documents/EmployeeResumes/" + resumeFileName));
+
+                        //Delete old image on file
+                        if (userDetail.ResumeFilename != null && userDetail.ResumeFilename != "noPDF.pdf")
+                        {
+                            System.IO.File.Delete(Server.MapPath("~/Content/Documents/EmployeeResumes/" + userDetail.ResumeFilename));
+                        }
+                        userDetail.ResumeFilename = resumeFileName;
+                    }
+                }
+
+                #endregion
                 db.Entry(userDetail).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");

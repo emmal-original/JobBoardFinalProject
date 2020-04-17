@@ -173,7 +173,9 @@
     <Compile Include="Controllers\DepartmentsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LocationsController.cs" />
+    <Compile Include="Controllers\ManageApplicationsController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\ManageOpenPositionsController.cs" />
     <Compile Include="Controllers\OpenPositionsController.cs" />
     <Compile Include="Controllers\PositionsController.cs" />
     <Compile Include="Controllers\RolesAdminController.cs" />
@@ -184,6 +186,7 @@
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AdminViewModel.cs" />
+    <Compile Include="Models\ContactViewModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -200,7 +203,7 @@
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <Content Include="Content\EmmaLintz ResumeITApproved.pdf" />
+    <Content Include="Content\Documents\EmployeeResumes\noPDF.pdf" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -226,7 +229,6 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
     <Content Include="Views\Account\ConfirmEmail.cshtml" />
@@ -294,6 +296,19 @@
     <Content Include="Views\UserDetails\Details.cshtml" />
     <Content Include="Views\UserDetails\Edit.cshtml" />
     <Content Include="Views\UserDetails\Index.cshtml" />
+    <Content Include="Views\ManageOpenPositions\Create.cshtml" />
+    <Content Include="Views\ManageOpenPositions\Delete.cshtml" />
+    <Content Include="Views\ManageOpenPositions\Details.cshtml" />
+    <Content Include="Views\ManageOpenPositions\Edit.cshtml" />
+    <Content Include="Views\ManageOpenPositions\Index.cshtml" />
+    <Content Include="Views\ManageApplications\Create.cshtml" />
+    <Content Include="Views\ManageApplications\Delete.cshtml" />
+    <Content Include="Views\ManageApplications\Details.cshtml" />
+    <Content Include="Views\ManageApplications\Edit.cshtml" />
+    <Content Include="Views\ManageApplications\Index.cshtml" />
+    <Content Include="Views\Applications\Apply.cshtml" />
+    <Content Include="Views\Home\Contact.cshtml" />
+    <Content Include="Views\Home\EmailConfirmation.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

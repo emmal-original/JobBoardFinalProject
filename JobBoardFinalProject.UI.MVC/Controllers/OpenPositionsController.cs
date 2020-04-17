@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using JobBoardFinalProject.DATA.EF;
+using Microsoft.AspNet.Identity;
 
 namespace JobBoardFinalProject.UI.MVC.Controllers
 {
@@ -21,6 +22,57 @@ namespace JobBoardFinalProject.UI.MVC.Controllers
             var openPositions = db.OpenPositions.Include(o => o.Location).Include(o => o.Position);
             return View(openPositions.ToList());
         }
+
+        //[Authorize(Roles ="Admin, Manager")]
+        //public ActionResult ManagerOpenPositions()
+        //{
+        //    if (User.IsInRole("Manager"))
+        //    {
+        //        string userID = User.Identity.GetUserId();
+        //        var managerLocation = from op in db.OpenPositions
+        //                              where op.Location.ManagerId == userID
+        //                              select op;
+        //        return View(managerLocation.ToList());
+        //    }
+        //    else
+        //    {
+        //        var openPositions = db.OpenPositions.Include(o => o.Location).Include(o => o.Position);
+        //        return View(openPositions.ToList());
+        //    }
+        //}
+
+        //POST: Apply
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        [Authorize]
+        public ActionResult Apply(int id)
+        {
+            Application app = new Application();
+
+            string currentUserID = User.Identity.GetUserId();
+            var user = (from ud in db.UserDetails
+                       where ud.UserId == currentUserID
+                       select ud).FirstOrDefault();
+            string resume = user.ResumeFilename;
+
+            app.UserId = currentUserID;
+            app.OpenPositionId = id;
+            app.ApplicationDate = DateTime.Now;
+            app.ApplicationStatusId = 1;
+            app.ResumeFilename = resume;
+
+            if (ModelState.IsValid)
+            {
+                db.Applications.Add(app);
+                db.SaveChanges();
+
+                return RedirectToAction("Index", "Applications");
+            }
+
+            return View();
+        }
+
+
 
         // GET: OpenPositions/Details/5
         [Authorize]
@@ -44,6 +96,7 @@ namespace JobBoardFinalProject.UI.MVC.Controllers
         {
             ViewBag.LocationId = new SelectList(db.Locations, "LocationID", "BranchNumber");
             ViewBag.PositionId = new SelectList(db.Positions, "PositionId", "Title");
+
             return View();
         }
 

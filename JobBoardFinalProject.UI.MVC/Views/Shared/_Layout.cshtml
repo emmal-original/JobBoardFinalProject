@@ -29,19 +29,21 @@
                     {
                         <li>@Html.ActionLink("Open Positions", "Index", "OpenPositions")</li>
                         <li>@Html.ActionLink("User Details", "Index", "UserDetails")</li>
+                        <li>@Html.ActionLink("Applications", "Index", "Applications")</li>
                     }
 
                     @if (Request.IsAuthenticated && (User.IsInRole("Admin") || User.IsInRole("Manager")))
                     {
-                        <li>@Html.ActionLink("Positions", "Index", "Positions")</li>
+                        <li>@Html.ActionLink("Manage Open Positions", "Index", "ManageOpenPositions")</li>
+                        <li>@Html.ActionLink("Manage Applications", "Index", "ManageApplications")</li>
                     }
-
 
                     @if (Request.IsAuthenticated && User.IsInRole("Admin"))
                     {
                         <li>@Html.ActionLink("Departments", "Index", "Departments")</li>
                         <li>@Html.ActionLink("Application Statuses", "Index", "ApplicationStatus")</li>
                         <li>@Html.ActionLink("Locations", "Index", "Locations")</li>
+                        <li>@Html.ActionLink("Positions", "Index", "Positions")</li>
                         <li>@Html.ActionLink("RolesAdmin", "Index", "RolesAdmin")</li>
                         <li>@Html.ActionLink("UsersAdmin", "Index", "UsersAdmin")</li>
                     }

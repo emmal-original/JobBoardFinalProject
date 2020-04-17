@@ -1,15 +1,21 @@
 ﻿@model JobBoardFinalProject.DATA.EF.Application
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Application Details";
 }
 
-<h2>Details</h2>
+<h2>@ViewBag.Details</h2>
 
 <div>
-    <h4>Application</h4>
     <hr />
     <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ApplicationStatus.StatusName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ApplicationStatus.StatusName)
+        </dd>
         <dt>
             @Html.DisplayNameFor(model => model.ApplicationDate)
         </dt>
@@ -19,43 +25,105 @@
         </dd>
 
         <dt>
+            @Html.DisplayNameFor(model => model.OpenPosition.Position.Title)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OpenPosition.Position.Title)
+        </dd>
+
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OpenPosition.Position.Department.DepartmentName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OpenPosition.Position.Department.DepartmentName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OpenPosition.Location.BranchNumber)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.OpenPosition.Location.BranchNumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OpenPosition.Location.StreetAddress)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.OpenPosition.Location.StreetAddress)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.OpenPosition.Location.City)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.OpenPosition.Location.City)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.OpenPosition.Location.State)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.OpenPosition.Location.State)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.OpenPosition.Location.ZipCode)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.OpenPosition.Location.ZipCode)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OpenPosition.Position.JobDescription)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OpenPosition.Position.JobDescription)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.OpenPosition.Position.HasRelocationBenefits)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OpenPosition.Position.HasRelocationBenefits)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.OpenPosition.Position.IsFullTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OpenPosition.Position.IsFullTime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OpenPosition.Position.IsSalary)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OpenPosition.Position.IsSalary)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.OpenPosition.Position.HasSupervisoryResponsibilities)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OpenPosition.Position.HasSupervisoryResponsibilities)
+        </dd>
+
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OpenPosition.Location.UserDetail.FullName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OpenPosition.Location.UserDetail.FullName)
+        </dd>
+        <dt>
             @Html.DisplayNameFor(model => model.ManagerNotes)
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.ManagerNotes)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.ResumeFilename)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ResumeFilename)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.ApplicationStatus.StatusName)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ApplicationStatus.StatusName)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.OpenPosition.OpenPositionId)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.OpenPosition.OpenPositionId)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.UserDetail.FirstName)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.UserDetail.FirstName)
         </dd>
 
     </dl>

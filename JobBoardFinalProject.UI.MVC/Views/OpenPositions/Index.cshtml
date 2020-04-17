@@ -6,12 +6,9 @@
 
 <h2>@ViewBag.Title</h2>
 
-@if (User.IsInRole("Manager"))
-{
-    <p>
-        @Html.ActionLink("Create New", "Create")
-    </p>
-}
+@*<p>
+    @Html.ActionLink("Create New", "Create")
+</p>*@
 
 <table class="table">
     <tr>
@@ -53,21 +50,8 @@
         </td>
         <td>
 
-            @if (User.IsInRole("Admin") || User.IsInRole("Manager"))
-            {
-                @Html.ActionLink("Edit", "Edit", new { id = item.OpenPositionId })
-                @Html.Raw(" |")
-            }
-
             @Html.ActionLink("Details", "Details", new { id = item.OpenPositionId })
-
-            @if (User.IsInRole("Manager"))
-            {
-                @Html.Raw("| ")
-                @Html.ActionLink("Delete", "Delete", new { id = item.OpenPositionId })
-            }
-
-
+            @Html.ActionLink("Apply", "Apply", "OpenPositions", new { id = item.OpenPositionId }, new { @class = "btn btn-default" })
         </td>
     </tr>
     }

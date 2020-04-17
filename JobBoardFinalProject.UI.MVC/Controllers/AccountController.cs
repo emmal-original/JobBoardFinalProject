@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using JobBoardFinalProject.DATA.EF;
+using System;
 
 namespace JobBoardFinalProject.UI.MVC.Controllers
 {
@@ -146,7 +147,7 @@ namespace JobBoardFinalProject.UI.MVC.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Register(RegisterViewModel model)
+        public async Task<ActionResult> Register(RegisterViewModel model, HttpPostedFileBase fupResume)
         {
             if (ModelState.IsValid)
             {
@@ -160,6 +161,33 @@ namespace JobBoardFinalProject.UI.MVC.Controllers
                     newUserDetails.FirstName = model.FirstName;
                     newUserDetails.LastName = model.LastName;
                     newUserDetails.ResumeFilename = model.ResumeFilename;
+
+                    #region FileUploadCreate
+
+                    //string resumeFileName = "";
+
+                    if (fupResume != null)
+                    {
+                        string resumeFileName = fupResume.FileName;
+
+                        string ext = resumeFileName.Substring(resumeFileName.LastIndexOf("."));
+
+                        if (ext.ToLower() == ".pdf")
+                        {
+                            resumeFileName = Guid.NewGuid() + ext;
+
+                            fupResume.SaveAs(Server.MapPath("~/Content/Documents/EmployeeResumes/" + resumeFileName));
+                        }
+                        else
+                        {
+                            resumeFileName = "noPDF.pdf";
+                        }
+
+                        newUserDetails.ResumeFilename = resumeFileName;
+                    }
+
+                    #endregion
+
 
                     UserManager.AddToRole(user.Id, "Employee");//auto-put user into Employee role
 
