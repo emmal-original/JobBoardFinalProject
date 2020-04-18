@@ -7,7 +7,6 @@
 <h2>@ViewBag.Title</h2>
 
 <div>
-    <hr />
     <dl class="dl-horizontal">
         <dt>
             @Html.DisplayNameFor(model => model.Title)
@@ -38,7 +37,8 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.HasRelocationBenefits)
+            @*@Html.DisplayFor(model => model.HasRelocationBenefits)*@
+            @(Model.HasRelocationBenefits ? "Yes" : "No")
         </dd>
 
         <dt>
@@ -46,7 +46,8 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.IsFullTime)
+            @*@Html.DisplayFor(model => model.IsFullTime)*@
+            @(Model.IsFullTime ? "Yes" : "No")
         </dd>
 
         <dt>
@@ -54,7 +55,8 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.IsSalary)
+            @*@Html.DisplayFor(model => model.IsSalary)*@
+            @(Model.IsSalary ? "Yes" : "No")
         </dd>
 
         <dt>
@@ -62,16 +64,18 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.HasSupervisoryResponsibilities)
+            @*@Html.DisplayFor(model => model.HasSupervisoryResponsibilities)*@
+            @(Model.HasSupervisoryResponsibilities ? "Yes" : "No")
         </dd>
 
-        <dt>
+        @*<dt>
             @Html.DisplayNameFor(model => model.IsFeaturedPosition)
-        </dt>
+        </dt>*
 
         <dd>
             @Html.DisplayFor(model => model.IsFeaturedPosition)
-        </dd>
+            @(Model.IsFeaturedPosition ? "Yes" : "No")
+        </dd>*@
 
 
     </dl>

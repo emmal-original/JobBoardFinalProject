@@ -6,9 +6,11 @@
 
 <h2>@ViewBag.Title</h2>
 
-<p>
+@*<p>
     @Html.ActionLink("Create New", "Create")
-</p>
+</p>*@
+<h3>@TempData["SuccessMessage"]</h3>
+
 <table class="table">
     <tr>
         <th>
@@ -26,12 +28,12 @@
         <th>
             @Html.DisplayNameFor(model => model.OpenPosition.Location.State)
         </th>
-        <th>
+        @*<th>
             @Html.DisplayNameFor(model => model.OpenPosition.Location.UserDetail.FullName)
-        </th>
-        <th>
+        </th>*@
+        @*<th>
             @Html.DisplayNameFor(model => model.ManagerNotes)
-        </th>
+        </th>*@
         <th></th>
     </tr>
 
@@ -54,12 +56,12 @@
             @Html.DisplayFor(modelItem => item.OpenPosition.Location.State)
         </td>
 
-        <td>
+        @*<td>
             @Html.DisplayFor(modelItem => item.OpenPosition.Location.UserDetail.FullName)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.ManagerNotes)
-        </td>
+        </td>*@
         <td>
             @Html.ActionLink("Edit", "Edit", new { id = item.ApplicationId }) |
             @Html.ActionLink("Details", "Details", new { id = item.ApplicationId }) |

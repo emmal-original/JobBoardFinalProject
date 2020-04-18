@@ -25,6 +25,7 @@ namespace JobBoardFinalProject.UI.MVC.Controllers
                               select app;
 
             var applications = db.Applications.Include(a => a.ApplicationStatus).Include(a => a.OpenPosition).Include(a => a.UserDetail);
+
             return View(applicantID.ToList());
         }
 
@@ -44,33 +45,33 @@ namespace JobBoardFinalProject.UI.MVC.Controllers
         }
 
         // GET: Applications/Create
-        public ActionResult Create()
-        {
-            ViewBag.ApplicationStatusId = new SelectList(db.ApplicationStatuses, "ApplicationStatusId", "StatusName");
-            ViewBag.OpenPositionId = new SelectList(db.OpenPositions, "OpenPositionId", "OpenPositionId");
-            ViewBag.UserId = new SelectList(db.UserDetails, "UserId", "FirstName");
-            return View();
-        }
+        //public ActionResult Create()
+        //{
+        //    ViewBag.ApplicationStatusId = new SelectList(db.ApplicationStatuses, "ApplicationStatusId", "StatusName");
+        //    ViewBag.OpenPositionId = new SelectList(db.OpenPositions, "OpenPositionId", "OpenPositionId");
+        //    ViewBag.UserId = new SelectList(db.UserDetails, "UserId", "FirstName");
+        //    return View();
+        //}
 
         // POST: Applications/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ApplicationId,UserId,OpenPositionId,ApplicationDate,ManagerNotes,ApplicationStatusId,ResumeFilename")] Application application)
-        {
-            if (ModelState.IsValid)
-            {
-                db.Applications.Add(application);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
+        //// more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public ActionResult Create([Bind(Include = "ApplicationId,UserId,OpenPositionId,ApplicationDate,ManagerNotes,ApplicationStatusId,ResumeFilename")] Application application)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        db.Applications.Add(application);
+        //        db.SaveChanges();
+        //        return RedirectToAction("Index");
+        //    }
 
-            ViewBag.ApplicationStatusId = new SelectList(db.ApplicationStatuses, "ApplicationStatusId", "StatusName", application.ApplicationStatusId);
-            ViewBag.OpenPositionId = new SelectList(db.OpenPositions, "OpenPositionId", "OpenPositionId", application.OpenPositionId);
-            ViewBag.UserId = new SelectList(db.UserDetails, "UserId", "FirstName", application.UserId);
-            return View(application);
-        }
+        //    ViewBag.ApplicationStatusId = new SelectList(db.ApplicationStatuses, "ApplicationStatusId", "StatusName", application.ApplicationStatusId);
+        //    ViewBag.OpenPositionId = new SelectList(db.OpenPositions, "OpenPositionId", "OpenPositionId", application.OpenPositionId);
+        //    ViewBag.UserId = new SelectList(db.UserDetails, "UserId", "FirstName", application.UserId);
+        //    return View(application);
+        //}
 
         // GET: Applications/Edit/5
         public ActionResult Edit(int? id)

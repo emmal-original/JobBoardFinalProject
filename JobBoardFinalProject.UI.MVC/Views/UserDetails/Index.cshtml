@@ -6,9 +6,12 @@
 
 <h2>@ViewBag.Title</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+@*<p>
+        @Html.ActionLink("Create New", "Create")
+</p>*@
+
+<h3 class="text-danger">@TempData["ErrorMessage"]</h3>
+
 <table class="table">
     <tr>
         <th>

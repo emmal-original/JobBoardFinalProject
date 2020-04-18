@@ -11,8 +11,7 @@ namespace JobBoardFinalProject.DATA.EF//.Metadata
     public class ApplicationMetadata
     {
         [Required(ErrorMessage = "*User ID is required")]
-        [Display(Name = "User ID (email address)")]
-        [EmailAddress]
+        [Display(Name = "User ID")]
         public string UserId { get; set; }
 
         [Required(ErrorMessage = "*Open Position ID is required")]
@@ -49,7 +48,7 @@ namespace JobBoardFinalProject.DATA.EF//.Metadata
     {
         [Required(ErrorMessage ="*Application Status Name is required")]
         [StringLength(50, ErrorMessage="*Value must be 50 characters or less")]
-        [Display(Name = "Status Name")]
+        [Display(Name = "Status")]
         public string StatusName { get; set; }
 
         [UIHint("MultilineText")]

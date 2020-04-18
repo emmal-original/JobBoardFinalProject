@@ -25,6 +25,7 @@
         </th>
         <th>
             @Html.DisplayNameFor(model => model.ResumeFilename)
+            
         </th>
         <th>
             @Html.DisplayNameFor(model => model.ManagerNotes)
@@ -47,7 +48,8 @@
             @Html.DisplayFor(modelItem => item.UserDetail.FullName)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.ResumeFilename)
+            @*@Html.DisplayFor(modelItem => item.ResumeFilename)*@
+            <a href="@Url.Content("~/Content/Documents/EmployeeResumes/" + item.ResumeFilename)" target="_blank">View Resume</a>
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.ManagerNotes)

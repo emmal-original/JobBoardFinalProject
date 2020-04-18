@@ -85,14 +85,16 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.OpenPosition.Position.HasRelocationBenefits)
+            @*@Html.DisplayFor(model => model.OpenPosition.Position.HasRelocationBenefits)*@
+            @(Model.OpenPosition.Position.HasRelocationBenefits ? "Yes" : "No")
         </dd>
         <dt>
             @Html.DisplayNameFor(model => model.OpenPosition.Position.IsFullTime)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.OpenPosition.Position.IsFullTime)
+            @*@Html.DisplayFor(model => model.OpenPosition.Position.IsFullTime)*@
+            @(Model.OpenPosition.Position.IsFullTime ? "Yes" : "No")
         </dd>
 
         <dt>
@@ -100,18 +102,20 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.OpenPosition.Position.IsSalary)
+            @*@Html.DisplayFor(model => model.OpenPosition.Position.IsSalary)*@
+            @(Model.OpenPosition.Position.IsSalary ? "Yes" : "No")
         </dd>
         <dt>
             @Html.DisplayNameFor(model => model.OpenPosition.Position.HasSupervisoryResponsibilities)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.OpenPosition.Position.HasSupervisoryResponsibilities)
+            @*@Html.DisplayFor(model => model.OpenPosition.Position.HasSupervisoryResponsibilities)*@
+            @(Model.OpenPosition.Position.HasSupervisoryResponsibilities ? "Yes" : "No")
         </dd>
 
 
-        <dt>
+        @*<dt>
             @Html.DisplayNameFor(model => model.OpenPosition.Location.UserDetail.FullName)
         </dt>
 
@@ -124,7 +128,7 @@
 
         <dd>
             @Html.DisplayFor(model => model.ManagerNotes)
-        </dd>
+        </dd>*@
 
     </dl>
 </div>

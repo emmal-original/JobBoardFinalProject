@@ -19,6 +19,14 @@ namespace JobBoardFinalProject.UI.MVC.Controllers
         [Authorize]
         public ActionResult Index()
         {
+            //string activeUser = User.Identity.GetUserId();
+            //var appsByUser = from x in db.OpenPositions
+            //                     where x.Applications.UserDetails
+            //                     select x;
+            //var userAppliedFor = from x in db.OpenPositions
+            //                     where x.Applications.OpenPositionId
+            //                     select x;
+
             var openPositions = db.OpenPositions.Include(o => o.Location).Include(o => o.Position);
             return View(openPositions.ToList());
         }
@@ -61,10 +69,22 @@ namespace JobBoardFinalProject.UI.MVC.Controllers
             app.ApplicationStatusId = 1;
             app.ResumeFilename = resume;
 
+            if (resume == null)
+            {
+                TempData["ErrorMessage"] = "Resume required to apply for open positions. Please upload your resume.";
+                return RedirectToAction("Index", "UserDetails");
+            }
+            else
+            {
+                TempData["ErrorMessage"] = null;
+            }
+
             if (ModelState.IsValid)
             {
                 db.Applications.Add(app);
                 db.SaveChanges();
+
+                TempData["SuccessMessage"] = "Thank you for your interest in this position. Please check back for updates on the status of your application.";
 
                 return RedirectToAction("Index", "Applications");
             }

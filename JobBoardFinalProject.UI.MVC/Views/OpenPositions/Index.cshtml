@@ -9,7 +9,6 @@
 @*<p>
     @Html.ActionLink("Create New", "Create")
 </p>*@
-
 <table class="table">
     <tr>
         <th>
@@ -52,6 +51,8 @@
 
             @Html.ActionLink("Details", "Details", new { id = item.OpenPositionId })
             @Html.ActionLink("Apply", "Apply", "OpenPositions", new { id = item.OpenPositionId }, new { @class = "btn btn-default" })
+
+
         </td>
     </tr>
     }

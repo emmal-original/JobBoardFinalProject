@@ -7,7 +7,6 @@
 <h2>@ViewBag.Title</h2>
 
 <div>
-    <hr />
     <dl class="dl-horizontal">
         <dt>
             @Html.DisplayNameFor(model => model.PostingDate)
@@ -37,25 +36,29 @@
             @Html.DisplayNameFor(model => model.Position.HasRelocationBenefits)
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.Position.HasRelocationBenefits)
+            @*@Html.DisplayFor(model => model.Position.HasRelocationBenefits)*@
+            @(Model.Position.HasRelocationBenefits ? "Yes" : "No")
         </dd>
         <dt>
             @Html.DisplayNameFor(model => model.Position.IsFullTime)
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.Position.IsFullTime)
+            @*@Html.DisplayFor(model => model.Position.IsFullTime)*@
+            @(Model.Position.IsFullTime ? "Yes" : "No")
         </dd>
         <dt>
             @Html.DisplayNameFor(model => model.Position.IsSalary)
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.Position.IsSalary)
+            @*@Html.DisplayFor(model => model.Position.IsSalary)*@
+            @(Model.Position.IsSalary ? "Yes" : "No")
         </dd>
         <dt>
             @Html.DisplayNameFor(model => model.Position.HasSupervisoryResponsibilities)
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.Position.HasSupervisoryResponsibilities)
+            @*@Html.DisplayFor(model => model.Position.HasSupervisoryResponsibilities)*@
+            @(Model.Position.HasSupervisoryResponsibilities ? "Yes" : "No")
         </dd>
         <dt>
             @Html.DisplayNameFor(model => model.Location.BranchNumber)
@@ -97,5 +100,7 @@
         @Html.ActionLink("Edit", "Edit", new { id = Model.OpenPositionId })
         @Html.Raw(" |")
     }
+    @Html.ActionLink("Apply", "Apply", "OpenPositions", new { id = Model.OpenPositionId }, new { @class = "btn btn-default" })
+    @Html.Raw(" |")
     @Html.ActionLink("Back to List", "Index")
 </p>
