@@ -10,16 +10,17 @@
         @Html.ActionLink("Create New", "Create")
 </p>*@
 
-<h3 class="text-danger">@TempData["ErrorMessage"]</h3>
+<h3 class="text-danger">@TempData["ResumeErrorMessage"]</h3>
+<h3 class="text-danger">@TempData["InvalidFileType"]</h3>
 
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.FirstName)
+            @Html.DisplayNameFor(model => model.FullName)
         </th>
-        <th>
+        @*<th>
             @Html.DisplayNameFor(model => model.LastName)
-        </th>
+        </th>*@
         <th>
             @Html.DisplayNameFor(model => model.ResumeFilename)
         </th>
@@ -30,14 +31,23 @@
     {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.FirstName)
+                @Html.DisplayFor(modelItem => item.FullName)
             </td>
-            <td>
+            @*<td>
                 @Html.DisplayFor(modelItem => item.LastName)
-            </td>
+            </td>*@
             <td>
-                @*@Html.DisplayFor(modelItem => item.ResumeFilename)*@
-                <a href="@Url.Content("~/Content/Documents/EmployeeResumes/" + item.ResumeFilename)" target="_blank">Uploaded Resume</a>
+                @if (item.ResumeFilename == null)
+                {
+                @Html.ActionLink("Add Resume", "Edit", new { id = item.UserId })
+                }
+                else
+                {
+                    @Html.DisplayFor(modelItem => item.ResumeFilename)
+                    @Html.Raw(" | ")
+                    <a href="@Url.Content("~/Content/Documents/EmployeeResumes/" + item.ResumeFilename)" target="_blank">View Resume</a>
+                }
+
             </td>
             <td>
                 @Html.ActionLink("Edit", "Edit", new { id = item.UserId }) |

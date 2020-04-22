@@ -6,55 +6,75 @@
 
 <h2>@ViewBag.Title</h2>
 
-@*<p>
-    @Html.ActionLink("Create New", "Create")
-</p>*@
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.PostingDate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Position.Title)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Position.Department.DepartmentName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Location.City)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Location.State)
-        </th>
-        <th></th>
-    </tr>
+<p>
+    @Html.ActionLink("Toggle Tile View", "IndexTile", "OpenPositions", new { @class = "button" })
+</p>
+<table class="table" id="myTable">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.PostingDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Position.Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Position.Department.DepartmentName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Location.City)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Location.State)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
 
-    @foreach (var item in Model)
-    {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.PostingDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Position.Title)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Position.Department.DepartmentName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Location.City)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Location.State)
-        </td>
-        <td>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PostingDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Position.Title)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Position.Department.DepartmentName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Location.City)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Location.State)
+                </td>
+                <td>
 
-            @Html.ActionLink("Details", "Details", new { id = item.OpenPositionId })
-            @Html.ActionLink("Apply", "Apply", "OpenPositions", new { id = item.OpenPositionId }, new { @class = "btn btn-default" })
+                    @Html.ActionLink("Details", "Details", new { id = item.OpenPositionId, previousView = "Table" })
 
+                    @{ bool hasApplied = false; }
 
-        </td>
-    </tr>
-    }
+                    @foreach (var x in ViewBag.PositionsAppliedFor)
+                    {
 
+                        if (x == item.OpenPositionId)
+                        {
+                            hasApplied = true;
+                        }
+                    }
+                    @if (hasApplied == true)
+                    {
+                        <span class="btn btn-default">Applied</span>
+                    }
+                    else
+                    {
+                        @Html.ActionLink("Apply", "Apply", "OpenPositions", new { id = item.OpenPositionId }, new { @class = "" })
+
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
 </table>

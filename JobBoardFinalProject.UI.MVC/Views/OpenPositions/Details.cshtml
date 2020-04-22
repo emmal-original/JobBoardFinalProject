@@ -100,7 +100,39 @@
         @Html.ActionLink("Edit", "Edit", new { id = Model.OpenPositionId })
         @Html.Raw(" |")
     }
-    @Html.ActionLink("Apply", "Apply", "OpenPositions", new { id = Model.OpenPositionId }, new { @class = "btn btn-default" })
-    @Html.Raw(" |")
-    @Html.ActionLink("Back to List", "Index")
+
+    @{ bool hasApplied = false; }
+
+    @foreach (var x in ViewBag.PositionsAppliedFor)
+    {
+
+        if (x == Model.OpenPositionId)
+        {
+            hasApplied = true;
+        }
+    }
+    @if (hasApplied == true)
+    {
+        <span class="btn btn-default">Applied</span>
+    }
+    else
+    {
+        @Html.ActionLink("Apply", "Apply", "OpenPositions", new { id = Model.OpenPositionId }@*, new { @class = "btn btn-default" }*@)
+        @Html.Raw(" |")
+
+    }
+
+
+
+    @*@Html.ActionLink("Apply", "Apply", "OpenPositions", new { id = Model.OpenPositionId }, new { @class = "btn btn-default" })
+    @Html.Raw(" |")*@
+
+    @if (ViewBag.BackToView == "Table")
+    {
+        @Html.ActionLink("Back to List", "Index")
+    }
+    else
+    {
+        @Html.ActionLink("Back to List", "IndexTile")
+    }
 </p>

@@ -106,3 +106,7 @@ C:\Users\Student\Documents\Visual Studio 2017\Projects\12_PROJECT\JobBoardFinalP
 C:\Users\Student\Documents\Visual Studio 2017\Projects\12_PROJECT\JobBoardFinalProject\src\JobBoardFinalProject.UI.MVC\bin\JobBoardFinalProject.DATA.EF.dll
 C:\Users\Student\Documents\Visual Studio 2017\Projects\12_PROJECT\JobBoardFinalProject\src\JobBoardFinalProject.UI.MVC\bin\JobBoardFinalProject.DATA.EF.pdb
 C:\Users\Student\Documents\Visual Studio 2017\Projects\12_PROJECT\JobBoardFinalProject\src\JobBoardFinalProject.UI.MVC\bin\JobBoardFinalProject.DATA.EF.dll.config
+C:\Users\Student\Documents\Visual Studio 2017\Projects\12_PROJECT\JobBoardFinalProject\src\JobBoardFinalProject.UI.MVC\bin\PagedList.dll
+C:\Users\Student\Documents\Visual Studio 2017\Projects\12_PROJECT\JobBoardFinalProject\src\JobBoardFinalProject.UI.MVC\bin\PagedList.Mvc.dll
+C:\Users\Student\Documents\Visual Studio 2017\Projects\12_PROJECT\JobBoardFinalProject\src\JobBoardFinalProject.UI.MVC\bin\PagedList.xml
+C:\Users\Student\Documents\Visual Studio 2017\Projects\12_PROJECT\JobBoardFinalProject\src\JobBoardFinalProject.UI.MVC\bin\PagedList.Mvc.xml

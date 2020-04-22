@@ -156,6 +156,7 @@ namespace JobBoardFinalProject.DATA.EF//.Metadata
         [StringLength(50, ErrorMessage="*Value must be 50 characters or less")]
         public string Title { get; set; }
 
+        [UIHint("MultilineText")]
         [DisplayFormat(NullDisplayText = "[-N/A-]")]
         [Display(Name = "Job Description")]
         public string JobDescription { get; set; }

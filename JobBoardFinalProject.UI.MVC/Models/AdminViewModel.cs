@@ -21,6 +21,15 @@ namespace JobBoardFinalProject.UI.MVC.Models
         [EmailAddress]
         public string Email { get; set; }
 
+        //[Required]
+        //public string FirstName { get; set; }
+
+        //[Required]
+        //public string LastName { get; set; }
+
+        //[DisplayFormat(NullDisplayText ="[-N/A-]")]
+        //public string ResumeFilename { get; set; }
+
         public IEnumerable<SelectListItem> RolesList { get; set; }
     }
 }

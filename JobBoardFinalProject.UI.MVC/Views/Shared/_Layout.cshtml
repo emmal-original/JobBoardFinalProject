@@ -1,339 +1,339 @@
-﻿<!DOCTYPE html>
-<html lang="zxx">
+﻿<!DOCTYPE HTML>
+<!--
+    Editorial by HTML5 UP
+    html5up.net | ajlkn
+    Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
 <head>
-    <!-- Meta Tag -->
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name='copyright' content='Precon'>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Bright Horizons Bank Job Board</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <meta name="author" content="Emma Lintz" />
+    <meta name="description" content="This is a job board application created by Emma Lintz for final project for the Full Stack Web Developer program at Centriq Training." />
+    <meta name="keywords" content="Final Project, Job Board" />
 
-    <!-- Title Tag  -->
-    <title>@ViewBag.Title</title>
+    <!--PagedList-->
+    <link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
 
-    <!-- Favicon -->
-    <link rel="icon" type="~/Content/image/png" href="img/favicon.png">
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="~/Content/css/bootstrap.min.css">
-    <!-- Animate CSS -->
-    <link rel="stylesheet" href="~/Content/css/animate.min.css">
-    <!-- Font Awesome CSS -->
-    <link rel="stylesheet" href="~/Content/css/font-awesome.css">
-    <!-- FancyBox CSS -->
-    <link rel="stylesheet" href="~/Content/css/jquery.fancybox.min.css">
-    <!-- Magnipic Popup CSS -->
-    <link rel="stylesheet" href="~/Content/css/magnific-popup.min.css">
-    <!-- Slick Nav CSS -->
-    <link rel="stylesheet" href="~/Content/css/slicknav.min.css">
-    <!-- Slick Slider CSS -->
-    <link rel="stylesheet" href="~/Content/css/slick-slider.css">
-    <!-- Precon Stylesheet -->
-    <link rel="stylesheet" href="~/Content/css/reset.css">
-    <link rel="stylesheet" href="~/Content/style.css">
-    <link rel="stylesheet" href="~/Content/css/responsive.css">
-    <link rel="stylesheet" href="~/Content/css/skins/skin1.css">
+    <!--Bootstrap CSS-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.2/html5shiv.min.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
+    <!--Datatables.net CSS-->
+    <link rel="stylesheet" href="//cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css" />
 
-    <link rel="stylesheet" href="#" id="precon_custom">
+    <!--jQuery UI Datepicker-->
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="/resources/demos/style.css">
+
+    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+
+    <link rel="stylesheet" href="~/Content/assets/css/main.css" />
 </head>
-<body id="body" class="boxed-bg">
+<body class="is-preload">
 
-    <!-- Preloader -->
-    <div class="preloader-main">
-        <div class="preloader"></div>
+    <!-- Wrapper -->
+    <div id="wrapper">
+
+        <!-- Main -->
+        <div id="main">
+            <div class="inner">
+
+                <!-- Header -->
+                <header id="header">
+                    @Html.ActionLink("Bright Horizons Bank Job Board", "Index", "Home", new { @class = "logo" })
+                    @*<a href="index.html" class="logo"><strong>Editorial</strong> by HTML5 UP</a>*@
+                    <ul class="icons">
+                            <li><a href="emma_lintz@outlook.com" class="fas fa-envelope" aria-hidden="true">@*<span class="label">Email</span>*@</a></li>
+                            <li><a href="https://www.linkedin.com/in/emma-lintz-b5b71353" class="fab fa-linkedin-in" aria-hidden="true">@*<span class="label">LinkedIn</span>*@</a></li>
+                            @*<li><a href="#" class="icon brands fa-snapchat-ghost"><span class="label">Snapchat</span></a></li>
+                            <li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
+                            <li><a href="#" class="icon brands fa-medium-m"><span class="label">Medium</span></a></li>*@
+                        </ul>
+                </header>
+
+                <!-- Banner -->
+                <section id="banner">
+                    <div class="content">
+                        <header>
+                            <h1>
+                                Welcome to Bright Horizon Bank's Job Board
+                            </h1>
+                            <p>Your dream job, a single click away</p>
+                        </header>
+                        <p>At Bright Horizons Bank, our team is our greatest asset. To demonstrate our commitment to you and your professional growth, we have made it easy realize your career goals. To search available opportunities and apply with a single click, simply register for your account, upload your resume, and start searching!</p>
+                        <ul class="actions">
+                            @*<li>@Html.ActionLink("Register", "Register", "Account", new { @class = "button big" })</li>
+                            <li>@Html.ActionLink("Login", "Login", "Account", new { @class = "button big" })</li>*@
+                            <li><a href="/Account/Register" class="button big">Register</a></li>
+                            <li><a href="/Account/Login" class="button big">Login</a></li>
+                        </ul>
+                    </div>
+                    <span class="image object">
+                        <img src="~/Content/images/razvan-chisu-Ua-agENjmI4-unsplash (1).jpg" alt="Man looking up to the sky with arms wide" />
+                    </span>
+                </section>
+
+                <!-- Section -->
+                @*<section>*@
+                @*<header class="major">
+                        <h2>Erat lacinia</h2>
+                    </header>*@
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12">
+                            @*was class="features"*@
+                            @RenderBody()
+                        </div>
+                    </div>
+                </div>
+                @*<article>
+                        <span class="icon fa-gem"></span>
+                        <div class="content">
+                            <h3>Portitor ullamcorper</h3>
+                            <p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
+                        </div>
+                    </article>
+                    <article>
+                        <span class="icon solid fa-paper-plane"></span>
+                        <div class="content">
+                            <h3>Sapien veroeros</h3>
+                            <p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
+                        </div>
+                    </article>
+                    <article>
+                        <span class="icon solid fa-rocket"></span>
+                        <div class="content">
+                            <h3>Quam lorem ipsum</h3>
+                            <p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
+                        </div>
+                    </article>
+                    <article>
+                        <span class="icon solid fa-signal"></span>
+                        <div class="content">
+                            <h3>Sed magna finibus</h3>
+                            <p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
+                        </div>
+                    </article>*@
+                @*</section>*@
+
+                <!-- Section -->
+                @*<section>
+                        <header class="major">
+                            <h2>Ipsum sed dolor</h2>
+                        </header>
+                        <div class="posts">
+                            <article>
+                                <a href="#" class="image"><img src="images/pic01.jpg" alt="" /></a>
+                                <h3>Interdum aenean</h3>
+                                <p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
+                                <ul class="actions">
+                                    <li><a href="#" class="button">More</a></li>
+                                </ul>
+                            </article>
+                            <article>
+                                <a href="#" class="image"><img src="images/pic02.jpg" alt="" /></a>
+                                <h3>Nulla amet dolore</h3>
+                                <p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
+                                <ul class="actions">
+                                    <li><a href="#" class="button">More</a></li>
+                                </ul>
+                            </article>
+                            <article>
+                                <a href="#" class="image"><img src="images/pic03.jpg" alt="" /></a>
+                                <h3>Tempus ullamcorper</h3>
+                                <p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
+                                <ul class="actions">
+                                    <li><a href="#" class="button">More</a></li>
+                                </ul>
+                            </article>
+                            <article>
+                                <a href="#" class="image"><img src="images/pic04.jpg" alt="" /></a>
+                                <h3>Sed etiam facilis</h3>
+                                <p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
+                                <ul class="actions">
+                                    <li><a href="#" class="button">More</a></li>
+                                </ul>
+                            </article>
+                            <article>
+                                <a href="#" class="image"><img src="images/pic05.jpg" alt="" /></a>
+                                <h3>Feugiat lorem aenean</h3>
+                                <p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
+                                <ul class="actions">
+                                    <li><a href="#" class="button">More</a></li>
+                                </ul>
+                            </article>
+                            <article>
+                                <a href="#" class="image"><img src="images/pic06.jpg" alt="" /></a>
+                                <h3>Amet varius aliquam</h3>
+                                <p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
+                                <ul class="actions">
+                                    <li><a href="#" class="button">More</a></li>
+                                </ul>
+                            </article>
+                        </div>
+                    </section>*@
+
+            </div>
+        </div>
+
+        <!-- Sidebar -->
+        <div id="sidebar">
+            <div class="inner">
+
+                <!-- Search -->
+                @*<section id="search" class="alt">
+                        <form method="post" action="#">
+                            <input type="text" name="query" id="query" placeholder="Search" />
+                        </form>
+                    </section>*@
+
+                <!-- Menu -->
+                <nav id="menu">
+                    <header class="major">
+                        <h2>Menu</h2>
+                    </header>
+                    @Html.Partial("_LoginPartial")
+                    <ul>
+                        <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                        <li>@Html.ActionLink("About", "About", "Home")</li>
+                        <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+
+                        @if (Request.IsAuthenticated)
+                        {
+                            <li>@Html.ActionLink("Open Positions", "Index", "OpenPositions")</li>
+                            <li>@Html.ActionLink("Applications", "Index", "Applications")</li>
+                            <li>@Html.ActionLink("User Details", "Index", "UserDetails")</li>
+                        }
+
+                        @if (Request.IsAuthenticated && (User.IsInRole("Admin") || User.IsInRole("Manager")))
+                        {
+                            <li>
+                                <span class="opener">Manager</span>
+                                <ul>
+                                    <li>@Html.ActionLink("Manage Open Positions", "Index", "ManageOpenPositions")</li>
+                                    <li>@Html.ActionLink("Manage Applications", "Index", "ManageApplications")</li>
+                                </ul>
+                            </li>
+                        }
+                        @if (Request.IsAuthenticated && User.IsInRole("Admin"))
+                        {
+                            <li>
+                                <span class="opener">Admin</span>
+                                <ul>
+                                    <li>@Html.ActionLink("Positions", "Index", "Positions")</li>
+                                    <li>@Html.ActionLink("Departments", "Index", "Departments")</li>
+                                    <li>@Html.ActionLink("Locations", "Index", "Locations")</li>
+                                    <li>@Html.ActionLink("Application Statuses", "Index", "ApplicationStatus")</li>
+                                    <li>@Html.ActionLink("RolesAdmin", "Index", "RolesAdmin")</li>
+                                    <li>@Html.ActionLink("UsersAdmin", "Index", "UsersAdmin")</li>
+                                </ul>
+                            </li>
+                        }
+                    </ul>
+                </nav>
+
+                <!-- Section -->
+                <section>
+                    <header class="major">
+                        <h2>How can we help you?</h2>
+                    </header>
+                    <div class="mini-posts">
+                        <article>
+                            <a href="#" class="image"><img src="~/Content/images/tim-gouw-bwki71ap-y8-unsplash.jpg" alt="Woman sitting across from two women at conference table" class="image"/></a>
+                            <p>Have questions about a posting? Talk to your Supervisor or your HR representative. They are happy to find answers for you!</p>
+                        </article>
+                        <article>
+                            <a href="#" class="image"><img src="~/Content/images/luis-villasmil-4V8uMZx8FYA-unsplash.jpg" alt="Two men looking at a smart phone" /></a>
+                            <p>Want input on your resume and/or interview coaching? Talk to your HR representative. They are trained in career counseling to help you achieve your goals!</p>
+                        </article>
+                        <article>
+                            <a href="#" class="image"><img src="~/Content/images/cytonn-photography-ZJEKICY5EXY-unsplash.jpg" alt="Man working on laptop" /></a>
+                            <p>Have recommendations for improving this site? We want to hear them! Please submit enhancement requests via the Contact form. Your input will be considered for future releases.</p>
+                        </article>
+                    </div>
+                    <ul class="actions">
+                        <li>@Html.ActionLink("Contact", "Contact", "Home", new { @class = "button" })</li>
+                    </ul>
+                </section>
+
+                <!-- Section -->
+                <section>
+                    <header class="major">
+                        <h2>Get in touch</h2>
+                    </header>
+                    <p>Are you experiencing technical difficulties? Please submit your inquiry via phone, email, or the Contact Form. Our dedicated support team will respond to your inquiry within 1 business day.</p>
+                    <ul class="contact">
+                        <li class="icon solid fa-envelope"><a href="#">sysadmin@company.com</a></li>
+                        <li class="icon solid fa-phone">(999) 999-9999</li>
+                        <li class="icon solid fa-home">
+                            1740 W 92 St<br />
+                            Kansas City, MO 64114
+                        </li>
+                    </ul>
+                </section>
+
+                <!-- Footer -->
+                <footer id="footer">
+                    <p class="copyright">&copy @DateTime.Today.Year <a href="http://emmalintz.com" target="_blank">Emma Lintz</a>.Template Provided By: <a href="https://html5up.net">HTML5 UP</a>.</p>
+                </footer>
+
+            </div>
+        </div>
+
     </div>
-    <!--/ End Preloader -->
 
-    <div id="layout" class="boxed-layout">
+    <!-- Scripts -->
+    <script src="~/Content/assets/js/jquery.min.js"></script>
+    <script src="~/Content/assets/js/browser.min.js"></script>
+    <script src="~/Content/assets/js/breakpoints.min.js"></script>
+    <script src="~/Content/assets/js/util.js"></script>
+    <script src="~/Content/assets/js/main.js"></script>
 
-        <!-- Start Header -->
-        <header class="header">
-            <!-- Start Topbar -->
-            <div class="topbar">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="top-inner">
-                                <div class="row">
-                                    <div class="col-lg-8 col-12">
-                                        <!-- Top Contact -->
-                                        <ul class="top-contact">
-                                            <li><i class="fa fa-map-marker"></i>786 Brilon City, United Kingdom</li>
-                                            <li><a href="mailto:support@youremail.com"><i class="fa fa-paper-plane"></i>systemadmin@company.com</a></li>
-                                        </ul>
-                                        <!-- End Top Contact -->
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!--/ End Topbar -->
-            <!-- Header Inner -->
-            <div class="header-inner">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-2 col-12">
-                            <!-- Logo -->
-                            <div class="logo">
-                                <!-- Text Logo -->
-                                <div class="text-logo">
-                                    @Html.ActionLink("Precon.", "Index", "Home", null, new { @class = "navbar-brand" })
-                                </div>
-                            </div>
-                            <!-- Mobile Menu -->
-                            <div class="mobile-nav"></div>
-                        </div>
-                        <div class="col-lg-10 col-12">
-                            <div class="main-menu-bar">
-                                <!-- Main Menu -->
-                                <div class="main-menu">
-                                    <nav class="navbar navbar-expand-lg">
-                                        <div class="navbar-collapse">
-                                            <ul class="nav menu navbar-nav">
-                                                <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                                                <li>@Html.ActionLink("About", "About", "Home")</li>
-                                                <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
 
-                                                @if (Request.IsAuthenticated)
-                                                {
-                                                    <li>@Html.ActionLink("Open Positions", "Index", "OpenPositions")</li>
-                                                    <li>@Html.ActionLink("User Details", "Index", "UserDetails")</li>
-                                                    <li>@Html.ActionLink("Applications", "Index", "Applications")</li>
-                                                }
+    <!--Bootstrap-->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 
-                                                @if (Request.IsAuthenticated && (User.IsInRole("Admin") || User.IsInRole("Manager")))
-                                                {
-                                                    <li>@Html.ActionLink("Manage Open Positions", "Index", "ManageOpenPositions")</li>
-                                                    <li>@Html.ActionLink("Manage Applications", "Index", "ManageApplications")</li>
-                                                }
+    <!--jQuery UI Datepicker-->
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
-                                                @if (Request.IsAuthenticated && User.IsInRole("Admin"))
-                                                {
-                                                    <li>@Html.ActionLink("Departments", "Index", "Departments")</li>
-                                                    <li>@Html.ActionLink("Application Statuses", "Index", "ApplicationStatus")</li>
-                                                    <li>@Html.ActionLink("Locations", "Index", "Locations")</li>
-                                                    <li>@Html.ActionLink("Positions", "Index", "Positions")</li>
-                                                    <li>@Html.ActionLink("RolesAdmin", "Index", "RolesAdmin")</li>
-                                                    <li>@Html.ActionLink("UsersAdmin", "Index", "UsersAdmin")</li>
-                                                }
+    <!--Datatables.net-->
+    <script src="//cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
 
-                                            </ul>
-                                            @Html.Partial("_LoginPartial")
-                                        </div>
-                                    </nav>
-                                </div>
-                                <!--/ End Main Menu -->
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!--/ End Header Inner -->
-        </header>
-        <!--/ End Header -->
-        <!-- Hero Area -->
-        <section class="hero-area">
-            <div class="hero-slider">
-                <!-- Single Slider -->
-                <div class="single-slide" style="background-image:url('../Content/images/slider/slider-image1.jpg')">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-lg-8 col-12">
-                                <!-- Welcome Text -->
-                                <div class="welcome-text">
-                                    <div class="welcome-text-inner">
-                                        <div class="welcome-text-content">
-                                            <b>Nothing is impossible. Just start from now</b>
-                                            <h1>We Provide You Trusted Business & <span>Maximum</span> Profited Amount!</h1>
-                                            <p>Mauris quis tincidunt urna. Lorem ipsum dolor sit amet, consectetur adipiscing elit.<br> Aliquam et malesuada nunc, facilisis  pharetra ex, nec mollis lacus</p>
-                                            <div class="button">
-                                                <a href="portfolio.html" class="btn theme-2 effect">View Our Portfolio<i class="fa fa-long-arrow-right"></i></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- End Welcome Text -->
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!--/ End Slider Single -->
-            </div>
-        </section>
-        <!--/ End Hero Area -->
-        <!-- Why Choose -->
-        <!--<section class="why-choose section-padding">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-6 col-md-6 col-12">
-                        <!-- Image -->
-        <!--<div class="why-img">
-            <img src="images/why-choose.jpg" alt="#">
-            <a href="https://www.youtube.com/watch?v=FZQPhrdKjow" class="primary video-play mfp-fade"><i class="fa fa-play"></i>Watch now
-            <div class="waves-block">
-                <div class="waves wave-1"></div>
-                <div class="waves wave-2"></div>
-                <div class="waves wave-3"></div>
-            </div>
-            </a>
-        </div>-->
-        <!--/ End Image -->
-        <!--</div>
-        <div class="col-lg-6 col-md-6 col-12">
-            <div class="choose-main">
-                <div class="row">
-                    <div class="col-lg-6 col-md-6 col-12">-->
-        <!-- Single Choose -->
-        <!--<div class="single-choose">
-            <i class="fa fa-dashboard"></i>
-            <h4>Powerfull Admin Panel</h4>
-            <p>Donec tortor tellus, dapibus at dignissim finibus, viverra id urna. Nulla in neque volutpat, ultricies nisl id</p>-->
-        <!--</div>-->
-        <!--/ End Single Choose -->
-        <!--</div>
-        <div class="col-lg-6 col-md-6 col-12">-->
-        <!-- Single Choose -->
-        <!--<div class="single-choose">
-            <i class="fa fa-lightbulb-o"></i>
-            <h4>Modern Technology</h4>
-            <p>Donec tortor tellus, dapibus at dignissim finibus, viverra id urna. Nulla in neque volutpat, ultricies nisl id</p>
-        </div>-->
-        <!--/ End Single Choose -->
-        <!--</div>
-        <div class="col-lg-6 col-md-6 col-12">-->
-        <!-- Single Choose -->
-        <!--<div class="single-choose">
-            <i class="fa fa-cog"></i>
-            <h4>Unlimited Options</h4>
-            <p>Donec tortor tellus, dapibus at dignissim finibus, viverra id urna. Nulla in neque volutpat, ultricies nisl id</p>
-        </div>-->
-        <!--/ End Single Choose -->
-        <!--</div>
-        <div class="col-lg-6 col-md-6 col-12">-->
-        <!-- Single Choose -->
-        <!--<div class="single-choose">
-            <i class="fa fa-laptop"></i>
-            <h4>Fully Responsive</h4>
-            <p>Donec tortor tellus, dapibus at dignissim finibus, viverra id urna. Nulla in neque volutpat, ultricies nisl id</p>
-        </div>-->
-        <!--/ End Single Choose -->
-        <!--</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>-->
-        <!--/ End Why Choose -->
-        <!-- Call To Action -->
-        <!--<section class="call-to-action">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-10 col-12">
-                        <div class="call-to-main">
-                            <h2>We Have 30+ Years of Experience. You Always the Best Guidance.</h2>
-                            <p>consectetur adipiscing elit. Nulla vitae ex at dolor interdum tempor. Nam dictum sem felis</p>
-                        </div>
-                    </div>
-                    <div class="col-lg-2 col-12">
-                        <div class="button">
-                            <a href="contact.html" class="btn effect">Contact Us</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>-->
-        <!-- End Call To Action -->
-        <!-- Services -->
-        <section class="services pattern-1 section-padding">
-            <div class="container">
-                <div class="row">
-                    <div class="col-10 offset-1">
-                        @*<div class="section-title text-center m-bottom-30">
-                        <h2><span>Creative</span>Services</h2>
-                        <P>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus sagittis, libero a blandit efficitur, erat tortor tincidunt magna, eu porta felis arcu et lacus. Vestibulum accumsan odio sem<a href="services.html">View more service.</a></P>
-                        </div>*@
-                        <div id="mainContent">@RenderBody()</div>
-                    </div>
-                    @*<div class="col-lg-6 offset-lg-3 col-12">
-            <div class="section-title text-center m-bottom-30">
-                <h2><span>Creative</span>Services</h2>
-                <P>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus sagittis, libero a blandit efficitur, erat tortor tincidunt magna, eu porta felis arcu et lacus. Vestibulum accumsan odio sem<a href="services.html">View more service.</a></P>
-            </div>
-        </div>*@
-                </div>
-            </div>
-        </section>
-        <!-- Footer -->
-        <footer id="footer-fixed" class="footer">
-            <div class="footer-top">
-                <div class="container">
-                    <div class="row">
-                        <!-- Single Widget -->
-                        <div class="col-lg-4 col-md-6 col-12">
-                            <div class="single-widget about">
-                                <div class="logo">
-                                    <!-- Text Logo -->
-                                    <div class="text-logo">
-                                        <a href="index.html">Precon.</a>
-                                    </div>
-                                </div>
-                                <p>consectetur adipiscing elit. Sed lacus purus, auctor a eros consequat, condimentum rhoncus nibh. Donec ornare libero sed mattis consequat</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- Footer Bottom -->
-            <div class="copyright">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="copyright-inner">
-                                <p>&#9400; Copyright @DateTime.Now.Year<a href="http://emmalintz.com/" ; target="_blank">Emma Lintz</a>. Template Provide By <a href="https://www.codeglim.com">Codeglim.com</a></p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!--/ End Footer Bottom -->
-        </footer>
-        <!--/ End footer -->
 
-    </div> <!-- End Layout -->
-    <!-- Jquery JS -->
-    <script src="~/Content/js/jquery.min.js"></script>
-    <script src="~/Content/js/jquery-migrate-3.0.0.js"></script>
-    <!-- Popper JS -->
-    <script src="~/Content/js/popper.min.js"></script>
-    <!-- Bootstrap JS -->
-    <script src="~/Content/js/bootstrap.min.js"></script>
-    <!-- Modernizr JS -->
-    <script src="~/Content/js/modernizr.min.js"></script>
-    <!-- Isotop JS -->
-    <script src="~/Content/js/isotope.pkgd.min.js"></script>
-    <!-- Slick Slider JS -->
-    <script src="~/Content/js/slick.min.js"></script>
-    <!-- FacnyBox JS -->
-    <script src="~/Content/js/jquery-fancybox.min.js"></script>
-    <!-- Steller JS -->
-    <script src="~/Content/js/steller.min.js"></script>
-    <!-- Easing JS -->
-    <script src="~/Content/js/easing.min.js"></script>
-    <!-- Magnipic Popup JS -->
-    <script src="~/Content/js/magnific-popup.min.js"></script>
-    <!-- Slick Nav JS -->
-    <script src="~/Content/js/jquery.slicknav.min.js"></script>
-    <!-- ScrollUp JS -->
-    <script src="~/Content/js/jquery.scrollUp.min.js"></script>
-    <!-- Active JS -->
-    <script src="~/Content/js/active.js"></script>
+
+    <script>
+        $('#menu a').each(function () {
+            var fullAnchor = $(this).attr('href');
+            console.log(fullAnchor);
+            var aController = fullAnchor.split('/');
+            console.log('aController[1]: ' + aController[1])
+            var fullPath = (window.location.pathname + location.search).substr(1);
+            var pController = fullPath.split('/');
+            console.log('pController[0]: ' + pController[0]);
+            console.log('--------------------');
+            console.log(window.location.pathname);
+            console.log(fullAnchor);
+            if (aController[1] == pController[0]) {
+                $(this).addClass('active');
+            }
+            if ((aController[1] == 'Home' || aController[1] == 'Account') && window.location.pathname != fullAnchor) {
+                $(this).removeClass();
+            }
+        });
+
+        $(document).ready(function () {
+            $('#myTable').DataTable();
+        });
+
+        $(function () {
+            $("#datepicker").datepicker();
+        });
+
+    </script>
 
     @RenderSection("scripts", false)
 </body>

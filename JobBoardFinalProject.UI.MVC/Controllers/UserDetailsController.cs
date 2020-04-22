@@ -67,13 +67,20 @@ namespace JobBoardFinalProject.UI.MVC.Controllers
 
                     if (ext.ToLower() == ".pdf")
                     {
-                        resumeFileName = Guid.NewGuid() + ext;
+                        //resumeFileName = Guid.NewGuid() + ext;
+                        resumeFileName = DateTime.Now.ToString("yyyyMMddHHmmssfff") + "_" + fupResume.FileName;
 
                         fupResume.SaveAs(Server.MapPath("~/Content/Documents/EmployeeResumes/" + resumeFileName));
+
+                        TempData["InvalidFileType"] = null;
                     }
                     else
                     {
+                        TempData["InvalidFileType"] = "Only .pdf file types accepted. Please upload your resume in .pdf format to apply for open positions.";
+
                         resumeFileName = "noPDF.pdf";
+
+                        return RedirectToAction("Index", "UserDetails");
                     }
                 }
 
@@ -123,9 +130,12 @@ namespace JobBoardFinalProject.UI.MVC.Controllers
 
                     if (ext.ToLower() == ".pdf")
                     {
-                        resumeFileName = Guid.NewGuid() + ext;
+                        //resumeFileName = Guid.NewGuid() + ext;
+                        resumeFileName = DateTime.Now.ToString("yyyyMMddHHmmssfff") + "_" + fupResume.FileName;
 
                         fupResume.SaveAs(Server.MapPath("~/Content/Documents/EmployeeResumes/" + resumeFileName));
+
+                        TempData["InvalidFileType"] = null;
 
                         //Delete old image on file
                         if (userDetail.ResumeFilename != null && userDetail.ResumeFilename != "noPDF.pdf")
@@ -133,6 +143,12 @@ namespace JobBoardFinalProject.UI.MVC.Controllers
                             System.IO.File.Delete(Server.MapPath("~/Content/Documents/EmployeeResumes/" + userDetail.ResumeFilename));
                         }
                         userDetail.ResumeFilename = resumeFileName;
+                    }
+                    else
+                    {
+                        TempData["InvalidFileType"] = "Only .pdf file types accepted. Please upload your resume in .pdf format to apply for open positions.";
+
+                        return RedirectToAction("Index", "UserDetails");
                     }
                 }
 

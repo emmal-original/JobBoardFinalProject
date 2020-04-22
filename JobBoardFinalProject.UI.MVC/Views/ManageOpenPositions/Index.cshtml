@@ -13,43 +13,46 @@
 </p>
 }
 
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.PostingDate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Location.BranchNumber)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Position.Title)
-        </th>
-        <th></th>
-    </tr>
-
-    @foreach (var item in Model)
-    {
+<table class="table" id="myTable">
+    <thead>
         <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.PostingDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Location.BranchNumber)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Position.Title)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.OpenPositionId }) |
-                @Html.ActionLink("Details", "Details", new { id = item.OpenPositionId })
-
-                @if (User.IsInRole("Manager"))
-                {
-                    @Html.Raw("| ")
-                    @Html.ActionLink("Delete", "Delete", new { id = item.OpenPositionId })
-                }
-            </td>
+            <th>
+                @Html.DisplayNameFor(model => model.PostingDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Location.BranchNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Position.Title)
+            </th>
+            <th></th>
         </tr>
-    }
+    </thead>
 
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PostingDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Location.BranchNumber)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Position.Title)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.OpenPositionId }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.OpenPositionId })
+
+                    @if (User.IsInRole("Manager"))
+                    {
+                        @Html.Raw("| ")
+                        @Html.ActionLink("Delete", "Delete", new { id = item.OpenPositionId })
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
 </table>

@@ -174,17 +174,23 @@ namespace JobBoardFinalProject.UI.MVC.Controllers
 
                         if (ext.ToLower() == ".pdf")
                         {
-                            resumeFileName = Guid.NewGuid() + ext;
+                            //resumeFileName = Guid.NewGuid() + ext;
+                            resumeFileName = DateTime.Now.ToString("yyyyMMddHHmmssfff") + "_" + fupResume.FileName;
 
                             fupResume.SaveAs(Server.MapPath("~/Content/Documents/EmployeeResumes/" + resumeFileName));
-                        }
-                        else
-                        {
-                            resumeFileName = "noPDF.pdf";
-                        }
 
-                        newUserDetails.ResumeFilename = resumeFileName;
+                            newUserDetails.ResumeFilename = resumeFileName;
+                            //TempData["InvalidFileType"] = null;
+                        }
+                        //else
+                        //{
+                            //TempData["InvalidFileType"] = "Only .pdf file types accepted. Please upload your resume in .pdf format to apply for open positions.";
+
+                            //return RedirectToAction("Register", "Account");
+                            //resumeFileName = "noPDF.pdf";
+                        //}
                     }
+
 
                     #endregion
 

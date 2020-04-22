@@ -8,6 +8,8 @@ using System.Web;
 using System.Web.Mvc;
 using JobBoardFinalProject.DATA.EF;
 using Microsoft.AspNet.Identity;
+using PagedList;
+using PagedList.Mvc;
 
 namespace JobBoardFinalProject.UI.MVC.Controllers
 {
@@ -19,17 +21,79 @@ namespace JobBoardFinalProject.UI.MVC.Controllers
         [Authorize]
         public ActionResult Index()
         {
-            //string activeUser = User.Identity.GetUserId();
-            //var appsByUser = from x in db.OpenPositions
-            //                     where x.Applications.UserDetails
-            //                     select x;
-            //var userAppliedFor = from x in db.OpenPositions
-            //                     where x.Applications.OpenPositionId
-            //                     select x;
+            string currentUserID = User.Identity.GetUserId();
+            var userAppliedFor = db.Applications.Where(x => x.UserId == currentUserID);
+            var openPositions = db.OpenPositions.Include(o => o.Location).Include(o => o.Position).Include(o => o.Applications);
 
-            var openPositions = db.OpenPositions.Include(o => o.Location).Include(o => o.Position);
+            List<int> positionsAppliedFor = new List<int>();
+
+            foreach (var x in userAppliedFor)
+            {
+                foreach (var y in openPositions)
+                {
+                    if (x.OpenPositionId == y.OpenPositionId)
+                    {
+                        positionsAppliedFor.Add(y.OpenPositionId);
+                    }
+                }
+            }
+
+            ViewBag.PositionsAppliedFor = positionsAppliedFor;
+
             return View(openPositions.ToList());
         }
+
+        // GET: OpenPositions
+        [Authorize]
+        public ViewResult IndexTile(string searchString, string currentFilter, int page=1)
+        {
+            string currentUserID = User.Identity.GetUserId();
+            var userAppliedFor = db.Applications.Where(x => x.UserId == currentUserID);
+            var openPositions = db.OpenPositions.Include(o => o.Location).Include(o => o.Position).Include(o => o.Applications);
+
+            List<int> positionsAppliedFor = new List<int>();
+
+            foreach (var x in userAppliedFor)
+            {
+                foreach (var y in openPositions)
+                {
+                    if (x.OpenPositionId == y.OpenPositionId)
+                    {
+                        positionsAppliedFor.Add(y.OpenPositionId);
+                    }
+                }
+            }
+
+            ViewBag.PositionsAppliedFor = positionsAppliedFor;
+
+            int pageSize = 12;
+
+            var openPositionsList = db.OpenPositions.ToList();
+
+            if (searchString != null)
+            {
+                page = 1;
+            }
+            else
+            {
+                searchString = currentFilter;
+            }
+
+            ViewBag.CurrentFilter = searchString;
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                openPositionsList = (from x in openPositionsList
+                                     where x.Position.Title.ToLower().Contains(searchString.ToLower()) ||
+                        x.Position.Department.DepartmentName.ToLower().Contains(searchString.ToLower()) ||
+                        x.Location.City.ToLower().Contains(searchString.ToLower()) ||
+                        x.Location.State.ToLower().Contains(searchString.ToLower())
+                        select x).ToList();
+            }
+
+            return View(openPositionsList.ToPagedList(page, pageSize));
+        }
+
 
         //[Authorize(Roles ="Admin, Manager")]
         //public ActionResult ManagerOpenPositions()
@@ -68,27 +132,38 @@ namespace JobBoardFinalProject.UI.MVC.Controllers
             app.ApplicationDate = DateTime.Now;
             app.ApplicationStatusId = 1;
             app.ResumeFilename = resume;
+            var userAppliedFor = db.Applications.Where(x => x.UserId == currentUserID && x.OpenPositionId == id).FirstOrDefault();
 
             if (resume == null)
             {
-                TempData["ErrorMessage"] = "Resume required to apply for open positions. Please upload your resume.";
+                TempData["ResumeErrorMessage"] = "Resume required to apply for open positions. Please upload your resume.";
                 return RedirectToAction("Index", "UserDetails");
             }
             else
             {
-                TempData["ErrorMessage"] = null;
+                TempData["ResumeErrorMessage"] = null;
+
+                if (userAppliedFor != null)
+                {
+                    TempData["DuplicateApplicationMessage"] = "You have already applied for this Open Position. Please review your applications.";
+
+                    return RedirectToAction("Index", "Applications");
+                }
+                else
+                {
+                    TempData["DuplicateApplicationMessage"] = null;
+
+                    if (ModelState.IsValid)
+                    {
+                        db.Applications.Add(app);
+                        db.SaveChanges();
+
+                        TempData["SuccessMessage"] = "Thank you for your interest in this position. Please check back for updates on the status of your application.";
+
+                        return RedirectToAction("Index", "Applications");
+                    }
+                }
             }
-
-            if (ModelState.IsValid)
-            {
-                db.Applications.Add(app);
-                db.SaveChanges();
-
-                TempData["SuccessMessage"] = "Thank you for your interest in this position. Please check back for updates on the status of your application.";
-
-                return RedirectToAction("Index", "Applications");
-            }
-
             return View();
         }
 
@@ -96,7 +171,7 @@ namespace JobBoardFinalProject.UI.MVC.Controllers
 
         // GET: OpenPositions/Details/5
         [Authorize]
-        public ActionResult Details(int? id)
+        public ActionResult Details(int? id, string previousView)
         {
             if (id == null)
             {
@@ -107,8 +182,48 @@ namespace JobBoardFinalProject.UI.MVC.Controllers
             {
                 return HttpNotFound();
             }
+
+            string currentUserID = User.Identity.GetUserId();
+            var userAppliedFor = db.Applications.Where(x => x.UserId == currentUserID);
+            var openPositions = db.OpenPositions.Include(o => o.Location).Include(o => o.Position).Include(o => o.Applications);
+
+            List<int> positionsAppliedFor = new List<int>();
+
+            foreach (var x in userAppliedFor)
+            {
+                foreach (var y in openPositions)
+                {
+                    if (x.OpenPositionId == y.OpenPositionId)
+                    {
+                        positionsAppliedFor.Add(y.OpenPositionId);
+                    }
+                }
+            }
+
+            ViewBag.PositionsAppliedFor = positionsAppliedFor;
+
+
+            ViewBag.BackToView = previousView;
+
             return View(openPosition);
         }
+
+        // GET: OpenPositions/Details/5 FROM PAGED LIST
+        //[Authorize]
+        //public ActionResult DetailsFromIndexTile(int? id)
+        //{
+        //    if (id == null)
+        //    {
+        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+        //    }
+        //    OpenPosition openPosition = db.OpenPositions.Find(id);
+        //    if (openPosition == null)
+        //    {
+        //        return HttpNotFound();
+        //    }
+        //    return View(openPositionsList.ToPagedList(page, pageSize));
+        //}
+
 
         // GET: OpenPositions/Create
         [Authorize(Roles = "Manager")]
@@ -128,6 +243,7 @@ namespace JobBoardFinalProject.UI.MVC.Controllers
         [Authorize(Roles = "Manager")]
         public ActionResult Create([Bind(Include = "OpenPositionId,LocationId,PositionId,PostingDate")] OpenPosition openPosition)
         {
+
             if (ModelState.IsValid)
             {
                 db.OpenPositions.Add(openPosition);

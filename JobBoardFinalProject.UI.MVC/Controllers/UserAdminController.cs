@@ -7,6 +7,8 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using JobBoardFinalProject.DATA.EF;
+using System;
+using Microsoft.AspNet.Identity;
 
 namespace JobBoardFinalProject.UI.MVC.Controllers
 {
@@ -87,7 +89,7 @@ namespace JobBoardFinalProject.UI.MVC.Controllers
         // POST: /Users/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create(RegisterViewModel userViewModel, params string[] selectedRoles)
+        public async Task<ActionResult> Create(RegisterViewModel userViewModel, HttpPostedFileBase fupResume, params string[] selectedRoles)
         {
             if (ModelState.IsValid)
             {
@@ -103,6 +105,36 @@ namespace JobBoardFinalProject.UI.MVC.Controllers
                     newUserDetails.FirstName = userViewModel.FirstName;
                     newUserDetails.LastName = userViewModel.LastName;
                     newUserDetails.ResumeFilename = userViewModel.ResumeFilename;
+
+                    #region FileUploadCreate
+
+                    if (fupResume != null)
+                    {
+                        string resumeFileName = fupResume.FileName;
+
+                        string ext = resumeFileName.Substring(resumeFileName.LastIndexOf("."));
+
+                        if (ext.ToLower() == ".pdf")
+                        {
+                            resumeFileName = Guid.NewGuid() + ext;
+
+                            fupResume.SaveAs(Server.MapPath("~/Content/Documents/EmployeeResumes/" + resumeFileName));
+
+                            //TempData["InvalidFileType"] = null;
+                        }
+                        else
+                        {
+                            //TempData["InvalidFileType"] = "Only .pdf file types accepted. Please upload resume in .pdf format to apply for open positions.";
+
+                            resumeFileName = "noPDF.pdf";
+                        }
+
+                        newUserDetails.ResumeFilename = resumeFileName;
+                    }
+
+                    #endregion
+
+
 
                     FinalProjectEntities db = new FinalProjectEntities();
                     db.UserDetails.Add(newUserDetails);

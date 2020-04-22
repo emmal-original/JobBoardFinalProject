@@ -30,8 +30,21 @@
         </dt>
 
         <dd>
-            @*@Html.DisplayFor(model => model.ResumeFilename)*@
-            <a href="@Url.Content("~/Content/Documents/EmployeeResumes/" + Model.ResumeFilename)" target="blank">Uploaded Resume</a>
+            @if (Model.ResumeFilename == null)
+            {
+                @Html.ActionLink("Add Resume", "Edit", new { id = Model.UserId })
+            }
+            else
+            {
+                @Html.DisplayFor(model => model.ResumeFilename)
+                @Html.Raw(" | ")
+                <a href="@Url.Content("~/Content/Documents/EmployeeResumes/" + Model.ResumeFilename)" target="_blank">View Resume</a>
+            }
+
+
+            @*@Html.DisplayFor(model => model.ResumeFilename)
+            @Html.Raw(" | ")
+            <a href="@Url.Content("~/Content/Documents/EmployeeResumes/" + Model.ResumeFilename)" target="blank">Uploaded Resume</a>*@
         </dd>
 
     </dl>

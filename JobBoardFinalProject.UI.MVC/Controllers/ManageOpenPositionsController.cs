@@ -57,6 +57,10 @@ namespace JobBoardFinalProject.UI.MVC.Controllers
         {
             ViewBag.LocationId = new SelectList(db.Locations, "LocationID", "BranchNumber");
             ViewBag.PositionId = new SelectList(db.Positions, "PositionId", "Title");
+
+            //DateTime postingDate = DateTime.Today;
+            //openPosition.PostingDate = postingDate;
+
             return View();
         }
 
@@ -68,6 +72,10 @@ namespace JobBoardFinalProject.UI.MVC.Controllers
         [Authorize(Roles = "Manager")]
         public ActionResult Create([Bind(Include = "OpenPositionId,LocationId,PositionId,PostingDate")] OpenPosition openPosition)
         {
+            DateTime postingDate = new DateTime();
+            postingDate = DateTime.Today;
+            openPosition.PostingDate = postingDate;
+
             if (ModelState.IsValid)
             {
                 db.OpenPositions.Add(openPosition);
