@@ -13,6 +13,9 @@
     <meta name="description" content="This is a job board application created by Emma Lintz for final project for the Full Stack Web Developer program at Centriq Training." />
     <meta name="keywords" content="Final Project, Job Board" />
 
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+
     <!--PagedList-->
     <link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
 
@@ -41,38 +44,18 @@
 
                 <!-- Header -->
                 <header id="header">
-                    @Html.ActionLink("Bright Horizons Bank Job Board", "Index", "Home", new { @class = "logo" })
+                    <a class="logo" href="@Url.Action("Index", "Home")"><strong>Bright Horizons Bank Job Board</strong></a>
                     @*<a href="index.html" class="logo"><strong>Editorial</strong> by HTML5 UP</a>*@
                     <ul class="icons">
-                            <li><a href="emma_lintz@outlook.com" class="fas fa-envelope" aria-hidden="true">@*<span class="label">Email</span>*@</a></li>
-                            <li><a href="https://www.linkedin.com/in/emma-lintz-b5b71353" class="fab fa-linkedin-in" aria-hidden="true">@*<span class="label">LinkedIn</span>*@</a></li>
-                            @*<li><a href="#" class="icon brands fa-snapchat-ghost"><span class="label">Snapchat</span></a></li>
+                        <li><a href="mailto:emma_lintz@outlook.com" class="fas fa-envelope" style="text-decoration: none; border-bottom: none;" aria-hidden="true">@*<span class="label">Email</span>*@</a></li>
+                        <li><a href="https://www.linkedin.com/in/emma-lintz-b5b71353" class="fab fa-linkedin-in" target="_blank" style="text-decoration: none; border-bottom: none;" aria-hidden="true">@*<span class="label">LinkedIn</span>*@</a></li>
+                        @*<li><a href="#" class="icon brands fa-snapchat-ghost"><span class="label">Snapchat</span></a></li>
                             <li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
                             <li><a href="#" class="icon brands fa-medium-m"><span class="label">Medium</span></a></li>*@
-                        </ul>
+                    </ul>
                 </header>
 
-                <!-- Banner -->
-                <section id="banner">
-                    <div class="content">
-                        <header>
-                            <h1>
-                                Welcome to Bright Horizon Bank's Job Board
-                            </h1>
-                            <p>Your dream job, a single click away</p>
-                        </header>
-                        <p>At Bright Horizons Bank, our team is our greatest asset. To demonstrate our commitment to you and your professional growth, we have made it easy realize your career goals. To search available opportunities and apply with a single click, simply register for your account, upload your resume, and start searching!</p>
-                        <ul class="actions">
-                            @*<li>@Html.ActionLink("Register", "Register", "Account", new { @class = "button big" })</li>
-                            <li>@Html.ActionLink("Login", "Login", "Account", new { @class = "button big" })</li>*@
-                            <li><a href="/Account/Register" class="button big">Register</a></li>
-                            <li><a href="/Account/Login" class="button big">Login</a></li>
-                        </ul>
-                    </div>
-                    <span class="image object">
-                        <img src="~/Content/images/razvan-chisu-Ua-agENjmI4-unsplash (1).jpg" alt="Man looking up to the sky with arms wide" />
-                    </span>
-                </section>
+                @RenderSection("Banner", required: false)
 
                 <!-- Section -->
                 @*<section>*@
@@ -81,7 +64,7 @@
                     </header>*@
                 <div class="container">
                     <div class="row">
-                        <div class="col-12">
+                        <div class="col-12" id="mainContent">
                             @*was class="features"*@
                             @RenderBody()
                         </div>
@@ -193,11 +176,11 @@
                     <header class="major">
                         <h2>Menu</h2>
                     </header>
-                    @Html.Partial("_LoginPartial")
                     <ul>
+                        @Html.Partial("_LoginPartial")
+
                         <li>@Html.ActionLink("Home", "Index", "Home")</li>
                         <li>@Html.ActionLink("About", "About", "Home")</li>
-                        <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
 
                         @if (Request.IsAuthenticated)
                         {
@@ -230,52 +213,57 @@
                                 </ul>
                             </li>
                         }
+                        <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
                     </ul>
                 </nav>
 
                 <!-- Section -->
+
+
                 <section>
-                    <header class="major">
-                        <h2>How can we help you?</h2>
-                    </header>
                     <div class="mini-posts">
-                        <article>
-                            <a href="#" class="image"><img src="~/Content/images/tim-gouw-bwki71ap-y8-unsplash.jpg" alt="Woman sitting across from two women at conference table" class="image"/></a>
-                            <p>Have questions about a posting? Talk to your Supervisor or your HR representative. They are happy to find answers for you!</p>
-                        </article>
-                        <article>
-                            <a href="#" class="image"><img src="~/Content/images/luis-villasmil-4V8uMZx8FYA-unsplash.jpg" alt="Two men looking at a smart phone" /></a>
-                            <p>Want input on your resume and/or interview coaching? Talk to your HR representative. They are trained in career counseling to help you achieve your goals!</p>
-                        </article>
-                        <article>
-                            <a href="#" class="image"><img src="~/Content/images/cytonn-photography-ZJEKICY5EXY-unsplash.jpg" alt="Man working on laptop" /></a>
-                            <p>Have recommendations for improving this site? We want to hear them! Please submit enhancement requests via the Contact form. Your input will be considered for future releases.</p>
-                        </article>
+                        @if (Request.IsAuthenticated)
+                        {
+                            <article>
+                                <img class="image" src="~/Content/images/tim-gouw-bwki71ap-y8-unsplash.jpg" alt="Woman sitting across from two women at conference table" />
+                                <p>Have questions about a posting? Talk to your Supervisor or your HR representative. They are happy to find answers for you!</p>
+                            </article>
+                            <article>
+                                <img class="image" src="~/Content/images/luis-villasmil-4V8uMZx8FYA-unsplash.jpg" alt="Two men looking at a smart phone" />
+                                <p>Want input on your resume and/or interview coaching? Talk to your HR representative. They are trained in career counseling to help you achieve your goals!</p>
+                            </article>
+                        }
+                            <article>
+                                <header class="major">
+                                    <h2>Get in touch!</h2>
+                                </header>
+                                <img class="image" src="~/Content/images/cytonn-photography-ZJEKICY5EXY-unsplash.jpg" alt="Man working on laptop" />
+                                <p>Have questions about this site, or do you want to discuss entry-level developer opportunities? Please contact me via the Contact form and I will respond to your message promptly, or you may connect with me on LinkedIn. I look forward to hearing from you!</p>
+                                <a href="@Url.Action("Contact", "Home")" class="button">Contact</a>
+                            </article>
                     </div>
-                    <ul class="actions">
-                        <li>@Html.ActionLink("Contact", "Contact", "Home", new { @class = "button" })</li>
-                    </ul>
                 </section>
 
+
                 <!-- Section -->
-                <section>
-                    <header class="major">
-                        <h2>Get in touch</h2>
-                    </header>
-                    <p>Are you experiencing technical difficulties? Please submit your inquiry via phone, email, or the Contact Form. Our dedicated support team will respond to your inquiry within 1 business day.</p>
-                    <ul class="contact">
-                        <li class="icon solid fa-envelope"><a href="#">sysadmin@company.com</a></li>
-                        <li class="icon solid fa-phone">(999) 999-9999</li>
-                        <li class="icon solid fa-home">
-                            1740 W 92 St<br />
-                            Kansas City, MO 64114
-                        </li>
-                    </ul>
-                </section>
+                @*<section>
+                        <header class="major">
+                            <h2>Get in touch</h2>
+                        </header>
+                        <p>Are you experiencing technical difficulties? Please submit your inquiry via phone, email, or the Contact Form. Our dedicated support team will respond to your inquiry within 1 business day.</p>
+                        <ul class="contact">
+                            <li class="icon solid fa-envelope"><a href="#">sysadmin@company.com</a></li>
+                            <li class="icon solid fa-phone">(999) 999-9999</li>
+                            <li class="icon solid fa-home">
+                                1740 W 92 St<br />
+                                Kansas City, MO 64114
+                            </li>
+                        </ul>
+                    </section>*@
 
                 <!-- Footer -->
                 <footer id="footer">
-                    <p class="copyright">&copy @DateTime.Today.Year <a href="http://emmalintz.com" target="_blank">Emma Lintz</a>.Template Provided By: <a href="https://html5up.net">HTML5 UP</a>.</p>
+                    <p class="copyright">&copy @DateTime.Today.Year <a href="http://emmalintz.com" target="_blank">Emma Lintz</a>.Template Provided By: <a href="https://html5up.net" target="_blank">HTML5 UP</a>.</p>
                 </footer>
 
             </div>
@@ -335,6 +323,6 @@
 
     </script>
 
-    @RenderSection("scripts", false)
+    @RenderSection("scripts", required: false)
 </body>
 </html>

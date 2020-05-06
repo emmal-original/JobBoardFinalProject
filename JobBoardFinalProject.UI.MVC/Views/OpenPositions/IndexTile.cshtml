@@ -8,68 +8,66 @@
 
 <h2>@ViewBag.Title</h2>
 
-<p>
-    @Html.ActionLink("Toggle List View", "Index", "OpenPositions", new { @class = "button" })
-    @*@Html.ActionLink("Toggle List View", "Index", "OpenPositions", protocol: null, hostName: null, fragment: "startTiles", routeValues: null, htmlAttributes: null)*@
-    @using (Html.BeginForm("IndexTile", "OpenPositions", FormMethod.Get))
-    {
-    <p>
-        Find by name: @Html.TextBox("SearchString", ViewBag.CurrentFilter as string)
+@Html.ActionLink("Toggle List View", "Index", "OpenPositions", new { @class = "button" })
+@*@Html.ActionLink("Toggle List View", "Index", "OpenPositions", protocol: null, hostName: null, fragment: "startTiles", routeValues: null, htmlAttributes: null)*@
+
+@using (Html.BeginForm("IndexTile", "OpenPositions", FormMethod.Get))
+{
+    <div class="col-md-6 align-right" style="margin-top: 5rem;">
+        Search: @Html.TextBox("SearchString", ViewBag.CurrentFilter as string)
+    </div>
+    <div class="col-md-2 my-2 align-right">
         <input type="submit" value="Search" />
-    </p>
-    }
-    <div class="row">
-        @foreach (var item in Model)
-        {
-            <div class="col-md-4">
-                <div class="card mx-1 my-2 text-center">
-                    <div class="card-body">
-                        <h3 class="card-title pb-1">
-                            <a href="@Url.Action("Details", new { id = item.OpenPositionId })" class="m-auto">@Html.DisplayFor(modelItem => item.Position.Title)</a>
-                            @*@Html.ActionLink("Details", "Details", new { id = item.OpenPositionId }, new { @class = "card-link" })*@
-                        </h3>
-                        <h4 class="card-subtitle m-bottom-20 text-muted">
-                            @Html.DisplayFor(modelItem => item.Position.Department.DepartmentName)
-                        </h4>
-                        <p class="card-text">
-                            @Html.DisplayFor(modelItem => item.Location.City)
-                            @Html.Raw(", ")
-                            @Html.DisplayFor(modelItem => item.Location.State)
-                            <br>
-                            Posting Date: @Html.DisplayFor(modelitem => item.PostingDate)
-                        </p>
-                        @Html.ActionLink("Details", "Details", new { id = item.OpenPositionId, previousView = "Tile" }, new { @class = "card-link" })
-                        <div>
+    </div>
+}
 
-                            @{ bool hasApplied = false; }
+<div class="row">
+    @foreach (var item in Model)
+    {
+        <div class="col-md-4 box text-center">
+            <h3 class="pb-1">
+                <a href="@Url.Action("Details", new { id = item.OpenPositionId })" class="m-auto">@Html.DisplayFor(modelItem => item.Position.Title)</a>
+            </h3>
+            <h4 class="m-bottom-20 text-muted">
+                @Html.DisplayFor(modelItem => item.Position.Department.DepartmentName)
+            </h4>
+            <p>
+                @Html.DisplayFor(modelItem => item.Location.City)
+                @Html.Raw(", ")
+                @Html.DisplayFor(modelItem => item.Location.State)
+                <br>
+                Posting Date: @Html.DisplayFor(modelitem => item.PostingDate)
+            </p>
+            @Html.ActionLink("Details", "Details", new { id = item.OpenPositionId, previousView = "Tile" }, new { @class = "card-link" })
 
-                            @foreach (var x in ViewBag.PositionsAppliedFor)
-                            {
+            @{ bool hasApplied = false; }
 
-                                if (x == item.OpenPositionId)
-                                {
-                                    hasApplied = true;
-                                }
-                            }
-                            @if (hasApplied == true)
-                            {
-                                <span class="btn btn-default">Applied</span>
-                            }
-                            else
-                            {
-                                @Html.ActionLink("Apply", "Apply", "OpenPositions", new { id = item.OpenPositionId }@*, new { @class = "btn btn-default" }*@)
+            @foreach (var x in ViewBag.PositionsAppliedFor)
+            {
 
-                            }
-
-                            @*@Html.ActionLink("Apply", "Apply", "OpenPositions", new { id = item.OpenPositionId }, new { @class = " button" })*@
-                        </div>
-                    </div>
+                if (x == item.OpenPositionId)
+                {
+                    hasApplied = true;
+                }
+            }
+            @if (hasApplied == true)
+            {
+                <div class="text-center font-italic font-weight-bold">
+                    Applied
                 </div>
-            </div>
-        }
-    </div>
-    
-    <div class="m-auto">
-        Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
-        @Html.PagedListPager(Model, page => Url.Action("IndexTile", new { page }))
-    </div>
+            }
+            else
+            {
+                <div class="text-center">
+                    @Html.ActionLink("Apply", "Apply", "OpenPositions", new { id = item.OpenPositionId }, new { @class = "button small" })
+                </div>
+            }
+        </div>
+    }
+</div>
+
+
+<div class="m-auto">
+    Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+    @Html.PagedListPager(Model, page => Url.Action("IndexTile", new { page }))
+</div>

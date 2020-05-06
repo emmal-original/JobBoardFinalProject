@@ -55,7 +55,8 @@ namespace JobBoardFinalProject.UI.MVC.Controllers
         [Authorize(Roles ="Manager")]
         public ActionResult Create()
         {
-            ViewBag.LocationId = new SelectList(db.Locations, "LocationID", "BranchNumber");
+            string currentUser = User.Identity.GetUserId();
+            ViewBag.LocationId = new SelectList(db.Locations.Where(x=> x.ManagerId == currentUser), "LocationID", "BranchNumber");
             ViewBag.PositionId = new SelectList(db.Positions, "PositionId", "Title");
 
             //DateTime postingDate = DateTime.Today;
@@ -101,7 +102,9 @@ namespace JobBoardFinalProject.UI.MVC.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.LocationId = new SelectList(db.Locations, "LocationID", "BranchNumber", openPosition.LocationId);
+
+            string currentUser = User.Identity.GetUserId();
+            ViewBag.LocationId = new SelectList(db.Locations.Where(x=>x.ManagerId == currentUser), "LocationID", "BranchNumber", openPosition.LocationId);
             ViewBag.PositionId = new SelectList(db.Positions, "PositionId", "Title", openPosition.PositionId);
             return View(openPosition);
         }

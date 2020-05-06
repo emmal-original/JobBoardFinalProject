@@ -28,6 +28,7 @@
                 @Html.DisplayNameFor(model => model.Location.State)
             </th>
             <th></th>
+            <th></th>
         </tr>
     </thead>
 
@@ -53,6 +54,8 @@
                 <td>
 
                     @Html.ActionLink("Details", "Details", new { id = item.OpenPositionId, previousView = "Table" })
+                </td>
+                <td>
 
                     @{ bool hasApplied = false; }
 
@@ -66,11 +69,13 @@
                     }
                     @if (hasApplied == true)
                     {
-                        <span class="btn btn-default">Applied</span>
+                        <div class="text-center font-italic font-weight-bold">
+                            Applied
+                        </div>
                     }
                     else
                     {
-                        @Html.ActionLink("Apply", "Apply", "OpenPositions", new { id = item.OpenPositionId }, new { @class = "" })
+                        @Html.ActionLink("Apply", "Apply", "OpenPositions", new { id = item.OpenPositionId }, new { @class = "button small" })
 
                     }
                 </td>

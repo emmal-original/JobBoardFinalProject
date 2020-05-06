@@ -19,6 +19,9 @@
                 @Html.DisplayNameFor(model => model.ApplicationStatus.StatusName)
             </th>
             <th>
+                @Html.DisplayNameFor(model => model.ApplicationDate)
+            </th>
+            <th>
                 @Html.DisplayNameFor(model => model.OpenPosition.Position.Title)
             </th>
             <th>
@@ -31,11 +34,11 @@
                 @Html.DisplayNameFor(model => model.OpenPosition.Location.State)
             </th>
             @*<th>
-                    @Html.DisplayNameFor(model => model.OpenPosition.Location.UserDetail.FullName)
-                </th>*@
+            @Html.DisplayNameFor(model => model.OpenPosition.Location.UserDetail.FullName)
+        </th>*@
             @*<th>
-                    @Html.DisplayNameFor(model => model.ManagerNotes)
-                </th>*@
+            @Html.DisplayNameFor(model => model.ManagerNotes)
+        </th>*@
             <th></th>
         </tr>
     </thead>
@@ -43,36 +46,39 @@
     <tbody>
         @foreach (var item in Model)
         {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.ApplicationStatus.StatusName)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.OpenPosition.Position.Title)
-                </td>
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ApplicationStatus.StatusName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ApplicationDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OpenPosition.Position.Title)
+            </td>
 
-                <td>
-                    @Html.DisplayFor(modelItem => item.OpenPosition.Position.Department.DepartmentName)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.OpenPosition.Location.City)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.OpenPosition.Location.State)
-                </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OpenPosition.Position.Department.DepartmentName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OpenPosition.Location.City)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OpenPosition.Location.State)
+            </td>
 
-                @*<td>
-                        @Html.DisplayFor(modelItem => item.OpenPosition.Location.UserDetail.FullName)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.ManagerNotes)
-                    </td>*@
-                <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.ApplicationId }) |
-                    @Html.ActionLink("Details", "Details", new { id = item.ApplicationId }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.ApplicationId })
-                </td>
-            </tr>
+            @*<td>
+            @Html.DisplayFor(modelItem => item.OpenPosition.Location.UserDetail.FullName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ManagerNotes)
+        </td>*@
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.ApplicationId }) |
+                @Html.ActionLink("Details", "Details", new { id = item.ApplicationId }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.ApplicationId })
+            </td>
+        </tr>
         }
     </tbody>
 </table>

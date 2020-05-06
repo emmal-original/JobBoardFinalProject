@@ -28,9 +28,10 @@
                 @Html.DisplayNameFor(model => model.ResumeFilename)
 
             </th>
-            <th>
+            @*<th>
+                //This column was added for validation that correct data displaying (apps for only that manager's location)
                 @Html.DisplayNameFor(model => model.OpenPosition.Location.UserDetail.FullName)
-            </th>
+            </th>*@
             <th>
                 @Html.DisplayNameFor(model => model.ManagerNotes)
             </th>
@@ -58,9 +59,9 @@
                     @*@Html.DisplayFor(modelItem => item.ResumeFilename)*@
                     <a href="@Url.Content("~/Content/Documents/EmployeeResumes/" + item.ResumeFilename)" target="_blank">View Resume</a>
                 </td>
-                <td>
+                @*<td>
                     @Html.DisplayFor(modelItem => item.OpenPosition.Location.UserDetail.FullName)
-                </td>
+                </td>*@
                 <td>
                     @Html.DisplayFor(modelItem => item.ManagerNotes)
                 </td>

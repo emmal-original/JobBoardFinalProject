@@ -226,6 +226,7 @@
     <Content Include="Content\images\razvan-chisu-Ua-agENjmI4-unsplash %281%29.jpg" />
     <Content Include="Content\images\tim-gouw-bwki71ap-y8-unsplash.jpg" />
     <Content Include="Content\PagedList.css" />
+    <Content Include="favicon.ico" />
     <Content Include="_archive2\OrigContent2\css\animate.min.css" />
     <Content Include="_archive2\OrigContent2\css\bootstrap.min.css" />
     <Content Include="_archive2\OrigContent2\css\font-awesome.css" />
@@ -344,7 +345,6 @@
     <Content Include="_Archive\OrigContent\bootstrap-theme.min.css" />
     <Content Include="_Archive\OrigContent\bootstrap.css" />
     <Content Include="_Archive\OrigContent\bootstrap.min.css" />
-    <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="_Archive\OrigContent\Site.css" />
@@ -495,6 +495,7 @@
     <Content Include="Content\assets\webfonts\fa-solid-900.woff" />
     <Content Include="Content\assets\webfonts\fa-solid-900.woff2" />
     <Content Include="Content\Documents\EmployeeResumes\noPDF.pdf" />
+    <Content Include="Content\Documents\ProjectDocumentation4.23.20.pdf" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
